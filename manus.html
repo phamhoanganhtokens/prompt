@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Phân Tích Kiến Trúc Chi Tiết</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+        :root {
+            --primary-bg: #fcfcfc;
+            --accent-blue: #f0f4f8;
+            --text-main: #1a1a1a;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .report-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Times New Roman', Times, serif;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ccc, transparent);
+            margin: 3rem 0;
+        }
+
+        .justify-text {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .prompt-box {
+            background-color: var(--accent-blue);
+            border-left: 4px solid #2d3748;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .img-container {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .header-meta {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @media (max-width: 640px) {
+            .report-container {
+                padding: 2rem 1rem;
+            }
+            .prompt-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <div class="report-container bg-white shadow-sm">
+        <!-- Header Section -->
+        <header class="text-center mb-16 border-b pb-8">
+            <p class="header-meta">Báo Cáo Chuyên Môn</p>
+            <h1 class="text-4xl md:text-5xl mb-4 leading-tight">PHÂN TÍCH KIẾN TRÚC & ĐÁNH GIÁ MÔ HÌNH THỬ NGHIỆM</h1>
+            <div id="current-date" class="text-lg text-gray-600 italic"></div>
+        </header>
+
+        <!-- Section 1: Architectural Image -->
+        <section class="mb-16">
+            <div class="img-container">
+                <img src='https://opal.google/board/blobs/72df85da-a32a-457f-abce-e45060754d12' alt='Kiến trúc Dinh thự Tân cổ điển' class="mx-auto" />
+            </div>
+        </section>
+
+        <!-- Section 2: Architectural Details Analysis -->
+        <section class="mb-16">
+            <h2 class="text-2xl border-b-2 border-black pb-2 mb-8 inline-block">PHÂN TÍCH HÌNH ẢNH KIẾN TRÚC</h2>
+            <div class="justify-text text-lg space-y-6">
+                <p><strong>1. Phong cách kiến trúc:</strong> Dựa vào hình ảnh, công trình mang đậm phong cách kiến trúc Tân cổ điển Pháp (French Neoclassical), kết hợp với âm hưởng của kiến trúc Lâu đài Pháp (Châteauesque) và Beaux-Arts. Điểm cốt lõi của phong cách này thể hiện qua tính đối xứng trục tuyệt đối (bilateral symmetry), quy mô đồ sộ, hoành tráng và sự chăm chút tỉ mỉ vào các chi tiết trang trí nhằm tôn lên vẻ quyền uy, vương giả và lộng lẫy của dinh thự.</p>
+                
+                <p><strong>2. Các đặc điểm tòa nhà nổi bật:</strong></p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Số tầng:</strong> Công trình được thiết kế với 3 tầng nổi chính và 1 tầng áp mái, được đặt trên một khối bệ đỡ (podium) nâng cao toàn bộ nền nhà so với mặt sân, tạo sự bề thế.</li>
+                    <li><strong>Loại mái:</strong> Tòa nhà sử dụng mái Mansard - đặc trưng kinh điển của kiến trúc Pháp. Hệ mái có độ dốc lớn, giúp mở rộng không gian sử dụng cho tầng áp mái. Mái được điểm xuyết bằng các cửa sổ mái (dormer windows) viền vàng.</li>
+                    <li><strong>Vật liệu & Màu sắc:</strong> Sử dụng tường trát Stucco cao cấp hoặc ốp đá tự nhiên sáng màu (kem/trắng ngà). Ngói đá phiến màu xanh đen tương phản mạnh mẽ với hệ thống phù điêu mạ vàng hoàng kim.</li>
+                </ul>
+
+                <p><strong>3. Quy hoạch và tích hợp cảnh quan:</strong> Dinh thự được đặt giữa một thung lũng, bao quanh bởi những dãy núi và rừng cây nguyên sinh rậm rạp. Cảnh quan được chia cắt bởi các lối đi lát đá theo phong cách Vườn kỷ hà kiểu Pháp (French formal garden). Điểm nhấn của trục thần đạo là một đài phun nước ba tầng bằng đá cẩm thạch trắng nguyên khối, kết hợp với hệ thống cầu thang đôi ngoài trời (grand staircase).</p>
+
+                <p><strong>4. Phân chia không gian chức năng:</strong> Tầng trệt dành cho kỹ thuật và dịch vụ. Tầng 1 (Piano Nobile) là không gian ngoại giao với Đại sảnh thông tầng. Tầng 2 và 3 là khu vực riêng tư dành cho các Master Suite và phòng sinh hoạt gia đình. Tầng áp mái được tận dụng cho giải trí cao cấp.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 3: Test Prompt Generation -->
+        <section class="mb-16">
+            <h2 class="text-2xl border-b-2 border-black pb-2 mb-8 inline-block">CÂU HỎI KIỂM THỬ (PROMPT TEST)</h2>
+            <div class="prompt-box">
+                <h3 class="text-xl mb-4 font-bold">Title: Dinh thự Grand Valley - Phong cách kiến trúc Tân cổ điển Pháp</h3>
+                <div class="justify-text text-gray-800 leading-relaxed whitespace-pre-line">
+                    <strong>Phân tích kiến trúc và địa hình:</strong> Công trình mang đậm phong cách kiến trúc Tân cổ điển Pháp kết hợp với âm hưởng của kiến trúc Lâu đài Pháp và Beaux Arts. Điểm cốt lõi là tính đối xứng trục tuyệt đối quy mô đồ sộ và sự chăm chút tỉ mỉ vào các chi tiết trang trí nhằm tôn lên vẻ quyền uy vương giả. Dinh thự được đặt giữa một thung lũng rộng lớn bao quanh bởi những dãy núi và rừng cây nguyên sinh rậm rạp. Quy hoạch mặt bằng tuân thủ tính hình học chuẩn mực tạo ra nét tương phản kịch tính với vẻ hoang sơ của thiên nhiên. Hệ thống mặt nước rộng lớn bao bọc toàn bộ dinh thự với lối tiếp cận duy nhất là cây cầu phẳng dẫn vào sảnh chính. Sân vườn được quy hoạch theo kiểu vườn kỷ hà Pháp với các lối đi lát đá thảm cỏ và cây bụi được cắt tỉa thành các họa tiết đối xứng hoàn hảo. Điểm nhấn của trục chính là đài phun nước ba tầng bằng đá cẩm thạch trắng kết hợp với hệ thống cầu thang đôi ngoài trời uốn lượn bề thế.
+
+                    <strong>Phân chia nhiệm vụ thiết kế 3D:</strong> Nhiệm vụ thiết kế được chia thành các khối chức năng theo cao độ của tòa nhà. Khối đế và tầng trệt tập trung vào gara ô tô kín các phòng kỹ thuật điện nước kho lưu trữ và khu vực dành cho nhân viên vệ sĩ. Khối tầng một là không gian ngoại giao quan trọng nhất gồm đại sảnh thông tầng nằm sau vòm cửa kính khổng lồ phòng khách chính phòng ăn lớn và thư viện. Khối tầng hai và tầng ba là khu vực riêng tư tuyệt đối bao gồm các phòng ngủ Master Suite với ban công bán nguyệt các phòng ngủ thành viên và phòng sinh hoạt chung gia đình. Khối tầng áp mái nằm trong hệ mái Mansard được quy hoạch làm khu vực giải trí cao cấp như phòng chiếu phim phòng gym và phòng làm việc tĩnh lặng. Tất cả các khối phải đảm bảo tính đối xứng nghiêm ngặt với khối trung tâm đẩy nhô ra phía trước cùng hệ cột trụ và vòm cuốn mềm mại.
+
+                    <strong>Yêu cầu về vật liệu và nội thất:</strong> Mặt ngoài tòa nhà sử dụng tường trát Stucco hoặc ốp đá tự nhiên tông màu trắng kem phối hợp với hệ mái Mansard ngói đá phiến màu xanh đen. Các chi tiết phù điêu trên trán tường tam giác cửa sổ mái và phào chỉ dọc theo đỉnh mái phải được mạ vàng hoặc sơn vàng hoàng kim tạo điểm nhấn quyền lực. Hệ thống cửa sử dụng kính cường lực vòm cao với khung kim loại tối màu. Lan can các ban công và cầu thang sử dụng con tiện đá trắng hoặc sắt nghệ thuật được uốn tạc tinh xạch. Nội thất bên trong cần đồng bộ với vẻ vương giả bên ngoài ưu tiên sử dụng đá cẩm thạch gỗ quý và các chi tiết trang trí mạ vàng. Không gian phải được tổ chức sao cho mức độ riêng tư tăng dần từ dưới lên trên và đảm bảo luồng giao thông mạch lạc từ lõi đại sảnh trung tâm đến các cánh của tòa nhà.
+
+                    <strong>Tổng kết kết quả:</strong> Sản phẩm hoàn thiện phải là một tổ hợp kiến trúc dinh thự hoàng gia tráng lệ đạt được sự cân bằng hoàn hảo giữa tính quy tắc của phong cách cổ điển và vẻ đẹp tự do của thiên nhiên thung lũng. Mọi yếu tố từ màu sắc trắng kem chủ đạo đến các chi tiết mạ vàng và quy hoạch sân vườn kỷ hà phải tạo nên một tổng thể xa hoa thể hiện rõ nét đẳng cấp và vị thế của chủ nhân công trình.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Prompt Effectiveness Explanation -->
+        <section class="mb-8">
+            <h2 class="text-2xl border-b-2 border-black pb-2 mb-8 inline-block">GIẢI THÍCH HIỆU QUẢ CỦA PROMPT</h2>
+            <div class="justify-text text-lg bg-gray-50 p-6 rounded-lg border border-gray-100">
+                <p>Prompt kiểm thử này thể hiện tính hiệu quả cao nhờ việc chuyển đổi các quan sát mô tả từ bản phân tích kiến trúc thành một hệ thống yêu cầu kỹ thuật và thẩm mỹ khắt khe, đặt ra những thách thức đa tầng cho ứng dụng AI.</p>
+                <br>
+                <p>Về mặt xử lý hình khối, prompt buộc AI phải tuân thủ nghiêm ngặt tính đối xứng trục tuyệt đối và các quy tắc hình học chuẩn mực của phong cách Tân cổ điển Pháp, điều này yêu cầu năng lực tính toán không gian chính xác cao. Việc tích hợp cảnh quan cũng là một thử thách phức tạp khi AI phải duy trì sự tương phản kịch tính giữa cấu trúc nhân tạo "vườn kỷ hà" và vẻ hoang sơ của địa hình thung lũng, đòi hỏi khả năng hòa phối các yếu tố môi trường một cách hữu cơ.</p>
+                <br>
+                <p>Đặc biệt, prompt thể hiện sự xuất sắc trong việc chi tiết hóa thẩm mỹ khi yêu cầu AI nhận diện và áp dụng cụ thể các loại vật liệu (stucco, đá phiến, mạ vàng) cùng hệ thống màu sắc (trắng kem và vàng hoàng kim) để tái hiện vẻ quyền uy vương giả. Cuối cùng, bằng cách phân chia chức năng theo cao độ (từ khối đế kỹ thuật đến tầng áp mái giải trí), prompt thách thức AI trong việc tổ chức không gian logic và mạch lạc, đảm bảo tính riêng tư tăng dần theo đúng chuẩn mực kiến trúc dinh thự cao cấp. Đây là một công cụ kiểm thử toàn diện để đánh giá khả năng hiểu sâu và thực thi các thiết kế kiến trúc có độ phức tạp lớn của AI.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Set the current date in Vietnamese format
+        const dateElement = document.getElementById('current-date');
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        dateElement.textContent = `Ngày ${day} tháng ${month} năm ${year}`;
+
+        // Subtle animation for section reveal
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
