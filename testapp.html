@@ -5,161 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Báo Cáo Phân Tích Kiến Trúc</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-
-        /* Override for Times New Roman as requested */
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-color: #fcfcfc;
-            color: #1a1a1a;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Times New Roman', Times, serif;
-            letter-spacing: 0.02em;
-        }
-
-        .report-container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            background-color: #ffffff;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.03);
-            border: 1px solid #eeeeee;
-        }
-
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #d1d5db, transparent);
-            margin: 4rem 0;
-        }
-
-        .prompt-box {
-            background-color: #f8fafc;
-            border-left: 4px solid #334155;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 2px;
-        }
-
-        .image-wrapper {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .image-wrapper:hover {
-            transform: translateY(-5px);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        .date-display {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 640px) {
-            .report-container {
-                padding: 30px 20px;
-                box-shadow: none;
-                border: none;
-            }
-        }
-    </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            dark: '#1a1a1a',
-                            accent: '#334155',
-                            muted: '#f8fafc'
+                        report: {
+                            bg: '#fcfcfc',
+                            text: '#1a1a1a',
+                            accent: '#2c3e50',
+                            soft: '#f0f2f5',
                         }
+                    },
+                    fontFamily: {
+                        serif: ['"Times New Roman"', 'Times', 'serif'],
                     }
                 }
             }
         }
     </script>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: #f4f4f7;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .justified-text {
+            text-align: justify;
+        }
+        .section-divider {
+            border-bottom: 1px solid #e2e8f0;
+            margin: 3rem 0;
+        }
+        .prompt-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #2c3e50;
+            padding: 2rem;
+            position: relative;
+        }
+        .prompt-box::after {
+            content: "PROMPT";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #2c3e50;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-weight: bold;
+            color: #1a202c;
+            border-bottom: 2px solid #2c3e50;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .report-container {
+                margin: 0;
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="py-12 px-4 md:px-0">
 
-    <div class="report-container my-12">
+    <div class="report-container p-8 md:p-16 mb-12">
         <!-- Header Section -->
         <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold uppercase mb-4 text-brand-dark tracking-tight">
-                BÁO CÁO PHÂN TÍCH KIẾN TRÚC
+            <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 leading-tight">
+                BÁO CÁO PHÂN TÍCH KIẾN TRÚC VÀ THIẾT KẾ CÔNG TRÌNH
             </h1>
-            <div id="currentDate" class="date-display text-lg">
-                <!-- Date inserted via JS -->
-            </div>
+            <p class="text-lg text-gray-600 italic">
+                Ngày 24 tháng 05 năm 2024
+            </p>
         </header>
 
         <!-- Section 1: Architectural Image -->
-        <section class="mb-16 flex flex-col items-center">
-            <div class="image-wrapper overflow-hidden rounded-sm w-full">
-                <img src='https://opal.google/board/blobs/9b715cda-49c8-4d9e-b3ce-dd34513b0d64' alt='Kiến trúc Hiện đại Nhiệt đới' class="w-full h-auto object-cover block" />
+        <section class="flex flex-col items-center mb-16">
+            <div class="w-full">
+                <div class="flex justify-center">
+                    <img src='https://opal.google/board/blobs/36e6fc2d-1cce-4dfb-ac37-f4ef7a37c181' alt='Kiến trúc biệt thự hiện đại' class="w-full h-auto object-cover" />
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-4 italic">Hình 1: Phối cảnh tổng thể công trình biệt thự trên sườn đồi</p>
             </div>
-            <p class="mt-4 text-sm text-gray-500 italic">Hình 1: Phối cảnh kiến trúc Tropical Modernism</p>
         </section>
 
         <div class="section-divider"></div>
 
         <!-- Section 2: Architectural Details Analysis -->
         <section class="mb-16">
-            <h2 class="text-2xl font-bold border-b-2 border-brand-dark pb-2 mb-8 inline-block">
-                PHÂN TÍCH HÌNH ẢNH KIẾN TRÚC
-            </h2>
-            <div class="text-lg space-y-6">
+            <h2 class="text-2xl mb-8">PHÂN TÍCH HÌNH ẢNH KIẾN TRÚC</h2>
+            <div class="justified-text space-y-4 text-lg">
+                <p><strong>Phân tích kiến trúc của công trình:</strong></p>
                 <p>
-                    Dưới đây là bản phân tích kiến trúc chi tiết cho các hình ảnh được cung cấp:
-                </p>
-                
-                <h3 class="text-xl font-bold mt-8">1. Phong cách kiến trúc</h3>
-                <p>
-                    Công trình mang phong cách <strong>Kiến trúc Hiện đại Nhiệt đới (Tropical Modernism)</strong> pha trộn với tinh thần <strong>Tối giản (Minimalism)</strong>. Phong cách này thể hiện rõ qua các đường nét hình học sắc sảo, thiết kế ưu tiên công năng, loại bỏ các chi tiết trang trí rườm rà và đặc biệt chú trọng vào việc thích ứng với khí hậu địa phương, tạo sự giao thoa tối đa giữa không gian sống nhân tạo và thiên nhiên xung quanh.
-                </p>
-
-                <h3 class="text-xl font-bold mt-8">2. Các đặc điểm tòa nhà nổi bật</h3>
-                <ul class="list-disc ml-6 space-y-2 mb-6">
-                    <li><strong>Số tầng:</strong> Công trình là nhà 1 tầng (nhà trệt), thiết kế trải dài theo phương ngang, phù hợp với quỹ đất rộng và lối sống gần gũi với mặt đất.</li>
-                    <li><strong>Loại mái:</strong> Mái bằng hoặc mái dốc nhẹ (shed roof) được thiết kế xếp lớp (split-roof). Điểm nổi bật là phần mái đua ra (overhang) rất rộng, giúp che chắn ánh nắng gắt và mưa tạt vào mặt tiền. Giữa các lớp mái có bố trí dải cửa sổ hắt (clerestory windows) sát trần để lấy sáng tự nhiên và thoát khí nóng.</li>
-                    <li><strong>Vật liệu xây dựng:</strong> Sử dụng kết hợp các vật liệu mang tính tương phản cao nhằm tạo hiệu ứng thị giác: Bê tông/tường xây trát phẳng sơn trắng; Gỗ tự nhiên (ốp sàn hiên và làm hệ lam che nắng); Kính trong suốt với hệ khung nhôm/thép màu đen; Gạch bông gió (breeze blocks) bằng bê tông đúc.</li>
-                    <li><strong>Màu sắc chủ đạo:</strong> Bảng màu trung tính và ấm áp. Màu trắng của tường là phông nền chủ đạo, làm nổi bật màu nâu ấm của lam gỗ, màu đen của khung cửa và hòa quyện với màu xanh lục tươi mát của thảm thực vật xung quanh.</li>
-                    <li><strong>Hình dạng/Hình khối kiến trúc:</strong> Khối hộp chữ nhật gọn gàng, phi đối xứng. Các mảng khối đặc (tường trắng) và rỗng (cửa kính, tường gạch gió) được sắp xếp đan xen, tạo nên tỷ lệ hài hòa và nhẹ nhàng cho công trình.</li>
-                    <li><strong>Các chi tiết trang trí:</strong> Không sử dụng hoa văn đắp nổi. Vẻ đẹp trang trí đến từ cấu trúc vật liệu và ánh sáng: mảng tường gạch bông gió với họa tiết hình học tam giác lặp lại, hệ lam gỗ kẻ sọc dọc, và đặc biệt là hiệu ứng bóng đổ (shadow play) vô cùng ấn tượng trên nền tường trắng khi có ánh nắng chiếu vào.</li>
-                </ul>
-
-                <h3 class="text-xl font-bold mt-8">3. Bố cục và tích hợp cảnh quan</h3>
-                <p>
-                    <strong>Tương tác với môi trường:</strong> Tòa nhà được thiết kế theo hướng mở (open-plan). Hệ thống cửa trượt kính khổ lớn kéo dài từ sàn lên sát trần giúp xóa nhòa ranh giới giữa không gian trong nhà và ngoài trời.
+                    <strong>1. Phong cách kiến trúc</strong><br>
+                    Công trình mang phong cách kiến trúc <strong>Hiện đại (Modernist)</strong> pha trộn âm hưởng <strong>Đương đại siêu sang (Ultra-Luxury Contemporary)</strong> và <strong>Nhiệt đới (Tropical Modernism)</strong>. Thiết kế đề cao chủ nghĩa tối giản trong chi tiết trang trí, tập trung vào hình khối hình học táo bạo, thiết kế mở và sự giao thoa không giới hạn giữa không gian nội thất và cảnh quan thiên nhiên.
                 </p>
                 <p>
-                    <strong>Sân vườn:</strong> Công trình được bao bọc bởi một khu vườn nhiệt đới rậm rạp với thảm cỏ xanh mướt và các loại cây bản địa có tán lá lớn (như trầu bà lá xẻ - monstera, cọ, dương xỉ). Cảnh quan không chỉ làm nền mà còn đóng vai trò như một lớp rèm sinh thái, lọc không khí và điều hòa vi khí hậu cho ngôi nhà.
+                    <strong>2. Các đặc điểm nổi bật của công trình</strong><br>
+                    • <strong>Số tầng:</strong> Công trình được thiết kế giật cấp theo sườn đồi dốc, gồm khoảng <strong>4 tầng sinh hoạt chính</strong> (tính từ cốt hồ bơi trở lên) và <strong>1 tầng đế/bán hầm</strong> nằm dưới đáy hồ bơi.<br>
+                    • <strong>Kiểu mái:</strong> Sử dụng <strong>mái bằng</strong> xen kẽ các cao độ khác nhau. Mái được tận dụng tối đa làm không gian tiện ích (sân thượng ngắm cảnh, khu vực đặt bồn sục Jacuzzi) và lắp đặt hệ thống pin năng lượng mặt trời quy mô lớn.<br>
+                    • <strong>Vật liệu xây dựng:</strong> Bê tông cốt thép sơn trắng cho các mảng khối đặc; kính cường lực khổ lớn (vách kính sát trần) đóng vai trò vách ngăn chính; đá ốp tối màu tại khối đế hồ bơi tạo sự vững chãi; lan can kính trong suốt không viền giúp tối ưu hóa tầm nhìn.<br>
+                    • <strong>Màu sắc chủ đạo:</strong> Tông màu trung tính với sự <strong>tương phản mạnh mẽ giữa Trắng (bề mặt tường, trần) và Đen/Xám đậm (khung cửa, khối đế)</strong>. Ánh sáng vàng ấm từ nội thất là yếu tố tô điểm, làm mềm mại khối kiến trúc lạnh.<br>
+                    • <strong>Hình dáng khối kiến trúc:</strong> Bố cục phi đối xứng (asymmetrical). Nổi bật với các <strong>khối console (đòn bẩy) vươn dài ra không trung</strong> (đặc biệt là mảng khối chữ "Z" vát chéo ở cánh trái công trình), tạo cảm giác bay bổng, thách thức trọng lực.
                 </p>
                 <p>
-                    <strong>Khoảng đệm:</strong> Sàn hiên bằng gỗ (wooden deck) hơi giật cấp so với mặt cỏ đóng vai trò là không gian chuyển tiếp hoàn hảo giữa bãi cỏ và phòng khách, là nơi lý tưởng để thư giãn ngoài trời. (Lưu ý: Qua hình ảnh được cung cấp không quan sát thấy hồ bơi).
+                    <strong>3. Mặt bằng và tích hợp cảnh quan</strong><br>
+                    Thiết kế nương theo địa hình sườn núi dốc (sloping site architecture). Công trình như được "gắn" vào sườn đồi, tận dụng cao độ để đảm bảo 100% các phòng đều có tầm nhìn toàn cảnh (panoramic view) không bị che khuất. Chi tiết đắt giá nhất là <strong>hồ bơi vô cực khổng lồ dạng vách kính trong suốt</strong> vươn ra phía trước. Cây xanh được lồng ghép hữu cơ (green architecture), các cây cọ, dừa cảnh cỡ lớn vươn xuyên qua các khe hở ban công.
                 </p>
-
-                <h3 class="text-xl font-bold mt-8">4. Phân chia không gian chức năng sơ bộ</h3>
                 <p>
-                    Dựa vào mặt tiền và sự thay đổi của vật liệu, có thể suy luận cách bố trí không gian như sau:
+                    <strong>4. Phân chia không gian chức năng sơ bộ</strong><br>
+                    Dựa trên hình khối và vách kính, có thể thấy: Khối Giao thông tiếp cận (Tầng trên cùng) gồm gara và lối vào chính; Khu vực Nghỉ ngơi cá nhân (Các tầng lầu trên) với phòng ngủ Master tại khối console đắc địa nhất; Không gian Sinh hoạt chung (Tầng có hồ bơi) là lõi trung tâm với phòng khách thông tầng; và Không gian Giải trí/Phụ trợ (Khối đế dưới hồ bơi) dành cho hầm rượu, gym, spa.
                 </p>
-                <ul class="list-disc ml-6 space-y-2">
-                    <li><strong>Khu vực sinh hoạt chung (Phòng khách/Phòng sinh hoạt):</strong> Nằm ở vị trí trung tâm, nhận diện rõ nhất qua hệ cửa kính trượt mở ra hiên gỗ. Từ bên ngoài có thể nhìn thấy nội thất bên trong (sofa, kệ tivi). Không gian này nhận được ánh sáng và tầm nhìn tốt nhất.</li>
-                    <li><strong>Khu vực bếp/Ăn uống:</strong> Rất có thể nằm liên thông ngay phía sau hoặc bên cạnh phòng khách theo lối thiết kế không gian mở hiện đại, chung một khối tích không gian.</li>
-                    <li><strong>Khu vực riêng tư (Phòng ngủ):</strong> Khối nhà tường trắng đặc bên trái, được tô điểm bởi một mảng lam gỗ nhỏ, khả năng cao là phòng ngủ. Thiết kế kín đáo hơn để đảm bảo sự riêng tư nhưng vẫn có cửa sổ phía trên mái để thông gió.</li>
-                    <li><strong>Khu vực phụ trợ/Thư giãn riêng:</strong> Khối không gian nằm phía sau bức tường gạch bông gió bên phải. Bức tường này cho phép gió lưu thông xuyên qua và lọc bớt ánh sáng chói, tạo ra một không gian nửa kín nửa hở. Đây có thể là một phòng tắm kiểu nhiệt đối, hành lang thông gió, hoặc một phòng ngủ/phòng đa năng khác cần sự tĩnh lặng và mát mẻ.</li>
-                </ul>
             </div>
         </section>
 
@@ -167,30 +142,14 @@
 
         <!-- Section 3: Test Prompt Generation -->
         <section class="mb-16">
-            <h2 class="text-2xl font-bold border-b-2 border-brand-dark pb-2 mb-8 inline-block">
-                CÂU HỎI KIỂM THỬ (PROMPT TEST)
-            </h2>
+            <h2 class="text-2xl mb-8">CÂU HỎI KIỂM THỬ (PROMPT TEST)</h2>
             <div class="prompt-box">
-                <p class="font-bold mb-4 text-xl">Title: Tropical Minimalist Villa - Kiến trúc Hiện đại Nhiệt đới</p>
-                
-                <p class="mb-4">
-                    <strong class="block mb-1">Phân tích kiến trúc và địa hình:</strong>
-                    Công trình được thiết kế theo phong cách Hiện đại Nhiệt đới kết hợp tinh thần Tối giản, tập trung vào các đường nét hình học sắc sảo và sự giao thoa với thiên nhiên. Kiến trúc nhà trệt một tầng trải dài theo phương ngang trên diện tích đất rộng, sử dụng hệ mái bằng kết hợp mái dốc nhẹ dạng xếp lớp với phần mái đua ra rất rộng để che nắng và chắn mưa. Địa hình được bao quanh bởi vườn nhiệt đới rậm rạp với các loại cây bản địa như trầu bà lá xẻ và cọ, kết hợp thảm cỏ xanh mướt tạo nên một lớp rèm sinh thái điều hòa khí hậu cho ngôi nhà.
-                </p>
-                
-                <p class="mb-4">
-                    <strong class="block mb-1">Phân chia nhiệm vụ thiết kế 3D:</strong>
-                    Thiết kế được chia thành các khu vực chức năng rõ rệt. Khối trung tâm là không gian sinh hoạt chung gồm phòng khách và bếp ăn với hệ cửa kính trượt khổ lớn mở ra sàn hiên gỗ, tạo sự thông thoáng tối đa. Khối bên trái là khu vực phòng ngủ riêng tư với các mảng tường đặc sơn trắng và lam gỗ trang trí, có cửa sổ sát trần để thông gió. Khối bên phải là không gian phụ trợ hoặc thư giãn được bao bọc bởi tường gạch bông gió, cho phép gió lưu thông và tạo hiệu ứng ánh sáng. Khu vực ngoại thất bao gồm sàn hiên gỗ giật cấp và cảnh quan vườn nhiệt đới bao quanh toàn bộ công trình.
-                </p>
-                
-                <p class="mb-4">
-                    <strong class="block mb-1">Yêu cầu về vật liệu và nội thất:</strong>
-                    Sử dụng sự kết hợp giữa các vật liệu tương phản gồm tường bê tông sơn trắng, gỗ tự nhiên cho sàn và hệ lam, cùng khung cửa kính nhôm thép màu đen. Gạch bông gió bê tông với họa tiết hình học được sử dụng để tạo hiệu ứng bóng đổ trên nền tường trắng. Nội thất tối giản với các món đồ cơ bản như sofa và kệ tivi, phối hợp với bảng màu trung tính gồm trắng, nâu gỗ và đen. Ánh sáng tự nhiên được lấy từ hệ vách kính lớn và các dải cửa sổ clerestory sát trần để làm nổi bật chiều sâu không gian.
-                </p>
-                
-                <p class="mb-0">
-                    <strong class="block mb-1">Tổng kết kết quả:</strong>
-                    Sản phẩm cuối cùng là một bản thiết kế kiến trúc hiện đại tối giản nhưng giàu tính bản địa, giải quyết tốt bài toán về thông gió và chiếu sáng tự nhiên. Sự kết hợp khéo léo giữa vật liệu hiện đại và cảnh quan nhiệt đới tạo nên một không gian sống nghỉ dưỡng yên bình và sang trọng.
+                <p class="text-lg leading-relaxed italic text-gray-800">
+                    <strong>Title: Biệt thự Skyline Hillside - Phong cách Kiến trúc Hiện đại Nhiệt đới Siêu sang</strong><br><br>
+                    <strong>Phân tích kiến trúc và địa hình:</strong> Công trình được xây dựng trên địa hình sườn đồi dốc đứng với kiến trúc giật cấp thông minh nhằm tận dụng tối đa cao độ tự nhiên. Phong cách chủ đạo là Hiện đại kết hợp Đương đại siêu sang và Nhiệt đới hóa. Điểm nhấn là các khối hình học phi đối xứng với những mảng console vươn dài táo bạo đặc biệt là khối chữ Z vát chéo tạo hiệu ứng bay bổng trong không trung. Công trình sử dụng hệ mái bằng đa cao độ tích hợp không gian Jacuzzi và pin năng lượng mặt trời. Cảnh quan được lồng ghép hữu cơ với hệ thống cây xanh vươn qua các khe ban công và hồ bơi vô cực vách kính trong suốt đóng vai trò vừa là tiện ích vừa là tường chắn đất thẩm mỹ.<br><br>
+                    <strong>Phân chia nhiệm vụ thiết kế 3D:</strong> Nhiệm vụ thiết kế được chia thành các khu vực chức năng theo cao độ sàn. Khối tiếp cận ở tầng cao nhất phía sau bao gồm cổng chính và khu vực gara xe dẫn vào sảnh đón. Khối nghỉ ngơi riêng tư ở các tầng lầu trên tập trung vào các phòng ngủ trong đó phòng ngủ Master nằm tại khối console vươn rộng nhất để chiếm trọn tầm nhìn toàn cảnh. Khối sinh hoạt chung nằm tại tầng hồ bơi là không gian trung tâm với phòng khách thông tầng kết nối mở hoàn toàn với khu vực bếp ăn và hiên tắm nắng ngoài trời. Khối đế phía dưới hồ bơi được thiết kế cho các khu vực chức năng phụ trợ như phòng chiếu phim hầm rượu phòng gym và hệ thống kỹ thuật.<br><br>
+                    <strong>Yêu cầu về vật liệu và nội thất:</strong> Sử dụng bê tông cốt thép sơn trắng tạo hình khối sắc nét đối lập với vách kính cường lực khổ lớn từ sàn đến trần để xóa nhòa ranh giới trong ngoài. Khối đế hồ bơi ốp đá tự nhiên tối màu hoặc vật liệu phản quang để tạo sự tương phản mạnh mẽ. Lan can sử dụng kính trong suốt tuyệt đối không viền để tối ưu tầm nhìn. Nội thất cần chú trọng vào sự tối giản sang trọng với hệ thống ánh sáng kiến trúc vàng ấm hắt chân tường và âm sàn. Các mảng màu trung tính như trắng đen xám được sử dụng chủ đạo kết hợp với cây xanh để tạo không gian nghỉ dưỡng nhiệt đới đẳng cấp.<br><br>
+                    <strong>Tổng kết kết quả:</strong> Bản thiết kế 3D hoàn thiện phải thể hiện được sự hòa quyện tuyệt đối giữa kiến trúc siêu sang và địa hình tự nhiên hiểm trở. Kết quả cần làm bật lên vẻ đẹp của những đường nét ngang trải dài và hình khối console thách thức trọng lực đồng thời đảm bảo giải pháp ánh sáng và vật liệu phản ánh đúng chất lượng của một công trình Ultra Luxury mang tầm nhìn toàn cảnh không giới hạn.
                 </p>
             </div>
         </section>
@@ -198,55 +157,24 @@
         <div class="section-divider"></div>
 
         <!-- Section 4: Prompt Effectiveness Explanation -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold border-b-2 border-brand-dark pb-2 mb-8 inline-block">
-                GIẢI THÍCH HIỆU QUẢ CỦA PROMPT
-            </h2>
-            <div class="text-lg">
+        <section class="mb-16">
+            <h2 class="text-2xl mb-8">GIẢI THÍCH HIỆU QUẢ CỦA PROMPT</h2>
+            <div class="justified-text text-lg space-y-6">
                 <p>
-                    Prompt này thể hiện tính hiệu quả cao trong việc điều hướng AI xử lý các chi tiết kiến trúc phức tạp và logic không gian. Trước hết, việc sử dụng các thuật ngữ chuyên môn như "mái xếp lớp" (split-roof), "cửa sổ sát trần" (clerestory windows) và "gạch bông gió" (breeze blocks) tạo ra một thử thách kỹ thuật đáng kể cho AI. Điều này đòi hỏi hệ thống phải có khả năng hiểu sâu về hình học kiến trúc thay vì chỉ tái tạo các khối hộp đơn giản. Đặc biệt, yêu cầu về "hiệu ứng bóng đổ" trên nền tường trắng là một điểm chạm thông minh, buộc AI phải xử lý tương tác vật lý giữa ánh sáng mặt trời và cấu trúc vật liệu, từ đó tạo ra chiều sâu thị giác chân thực.
+                    Prompt kiểm thử cho công trình "Biệt thự Skyline Hillside" thể hiện tính hiệu quả vượt trội trong việc đánh giá năng lực xử lý của hệ thống AI thông qua ba phương diện cốt lõi:
                 </p>
                 <p>
-                    Về mặt cấu trúc, prompt tích hợp thành công các lớp thông tin từ tổng thể đến chi tiết. Việc phân chia nhiệm vụ thiết kế theo từng khối chức năng riêng biệt (sinh hoạt chung, phòng ngủ, khu phụ trợ) đặt ra yêu cầu khắt khe về tính logic trong tổ chức không gian. Điều này giúp AI định hình rõ nét mối liên hệ giữa nội thất và ngoại thất, đảm bảo sự giao thoa mượt mà qua hệ cửa kính trượt và sàn hiên gỗ giật cấp.
+                    <strong>Thứ nhất,</strong> prompt thách thức khả năng hiểu và tái hiện các cấu trúc hình học phức tạp trên địa hình đặc thù. Việc yêu cầu AI xử lý kiến trúc giật cấp nương theo sườn đồi dốc đứng, kết hợp với các khối console "thách thức trọng lực" (đặc biệt là khối chữ Z vát chéo), buộc AI phải có sự tính toán chính xác về tỷ lệ và không gian ba chiều mà không làm mất đi tính logic của kết cấu.
                 </p>
                 <p>
-                    Cuối cùng, khả năng chi tiết hóa vật liệu tương phản (bê tông trắng, nhôm đen, gỗ tự nhiên) kết hợp cùng hệ thực vật nhiệt đối đặc trưng (trầu bà lá xẻ, cọ) giúp AI nhận diện chính xác tính thẩm mỹ của phong cách Tropical Modernism. Prompt không chỉ dừng lại ở mô tả bề mặt mà còn truyền tải được "tinh thần" tối giản và khả năng thích ứng khí hậu của công trình, giúp sản phẩm đầu ra đạt được sự cân bằng giữa công năng kỹ thuật và giá trị nghệ thuật, đáp ứng tốt các tiêu chuẩn trong báo cáo phân tích kiến trúc chuyên nghiệp.
+                    <strong>Thứ hai,</strong> tính hiệu quả nằm ở việc tích hợp các tính năng công năng đa tầng lớp. Prompt không chỉ mô tả bề mặt mà còn yêu cầu sự kết nối chặt chẽ giữa các khu vực chức năng theo cao độ sàn (từ gara đỉnh đồi đến khối đế phụ trợ dưới lòng hồ bơi). Điều này kiểm tra khả năng duy trì tính nhất quán về kiến trúc của AI khi phải đồng thời xử lý các yếu tố kỹ thuật như pin năng lượng mặt trời, bể sục Jacuzzi và hệ thống hồ bơi vô cực vách kính đóng vai trò tường chắn đất.
+                </p>
+                <p>
+                    <strong>Thứ ba,</strong> prompt chi tiết hóa các yếu tố thẩm mỹ siêu sang (Ultra Luxury) để đo lường khả năng nhận diện vật liệu và ánh sáng của AI. Bằng cách chỉ định rõ sự tương phản giữa bê tông trắng, đá tự nhiên tối màu và vách kính khổ lớn không viền, kết hợp với hệ thống ánh sáng kiến trúc "vàng ấm hắt chân tường", prompt đặt ra một tiêu chuẩn cao về độ tinh tế trong diễn họa. Điều này giúp xác định xem AI có thể chuyển đổi các mô tả văn bản mang tính trừu tượng thành các đặc điểm thị giác đặc trưng của phong cách Hiện đại Nhiệt đới một cách chân thực hay không.
                 </p>
             </div>
         </section>
     </div>
 
-    <script>
-        // Set the current date in Vietnamese format
-        const dateElement = document.getElementById('currentDate');
-        const now = new Date();
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = now.getFullYear();
-        
-        dateElement.innerText = `Ngày ${day} tháng ${month} năm ${year}`;
-
-        // Subtle animation for elements on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'all 0.8s ease-out';
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
-
