@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Opal Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        charcoal: '#0a0a0a',
+                        surface: '#121212',
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-glow': 'pulseGlow 2s infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 5px rgba(16, 185, 129, 0.2)' },
+                            '100%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .emerald-gradient {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        .gold-shimmer {
+            background: linear-gradient(90deg, #d97706 0%, #fbbf24 50%, #d97706 100%);
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669;
+        }
+
+        /* Toggle Switch Custom */
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #10b981;
+        }
+        .toggle-checkbox:checked + .toggle-label .toggle-dot {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-emerald-500/30">
+
+    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 flex flex-col items-center min-h-screen">
+        
+        <!-- Header -->
+        <header class="w-full text-center mb-12 animate-fade-in">
+            <h1 class="font-heading text-4xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 mb-4">
+                PROMPT OPAL PRO
+            </h1>
+            <div class="h-1 w-24 bg-gold-600 mx-auto rounded-full"></div>
+        </header>
+
+        <!-- Welcome Section -->
+        <section class="text-center mb-16 max-w-2xl animate-slide-up" style="animation-delay: 0.1s">
+            <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
+                Chào mừng bạn đến với <span class="text-emerald-400 font-semibold">Prompt Opal Pro</span> – Công cụ sinh prompt chuyên nghiệp ngẫu nhiên. Nhấn nút bên dưới để nhận ngay một prompt chất lượng cao!
+            </p>
+        </section>
+
+        <!-- Action Area -->
+        <div class="w-full flex justify-center mb-16 animate-slide-up" style="animation-delay: 0.2s">
+            <button id="generateBtn" onclick="generatePrompt()" class="group relative px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-emerald-500/50">
+                <span id="btnLabel">Tạo Prompt Ngẫu Nhiên Mới</span>
+                <div class="absolute inset-0 rounded-xl border-2 border-emerald-400/20 group-hover:border-emerald-400/50 transition-colors"></div>
+            </button>
+        </div>
+
+        <!-- Information Display Area (Hidden by default, shown on generate) -->
+        <div id="resultArea" class="w-full opacity-0 translate-y-8 pointer-events-none transition-all duration-700 ease-out space-y-8">
+            
+            <!-- Domain Display -->
+            <div class="flex items-center space-x-4">
+                <span class="text-sm font-heading font-semibold uppercase tracking-widest text-gold-500">Lĩnh vực hôm nay:</span>
+                <div id="domainBadge" class="px-4 py-1.5 bg-emerald-900/30 border border-emerald-500/30 text-emerald-400 rounded-full font-semibold text-sm">
+                    SEO BLOG
+                </div>
+            </div>
+
+            <!-- Prompt Content Container -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600/20 to-gold-600/20 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative glass-panel rounded-2xl p-6 md:p-8">
+                    <div id="promptContent" class="font-mono text-sm md:text-base leading-relaxed text-gray-300 max-h-[500px] overflow-y-auto pr-4 whitespace-pre-wrap selection:bg-gold-500/40">
+                        <!-- Content will be injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Area -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pt-4">
+                <!-- Toggle -->
+                <div class="flex items-center space-x-4 bg-white/5 px-6 py-3 rounded-full border border-white/10">
+                    <span class="text-sm font-medium text-gray-300">Chế độ Siêu Chi Tiết</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="detailToggle" class="sr-only toggle-checkbox" checked>
+                        <div class="w-12 h-6 bg-gray-700 rounded-full transition-colors duration-300 toggle-label p-1">
+                            <div class="toggle-dot w-4 h-4 bg-white rounded-full transition-transform duration-300 shadow-sm"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Copy Button -->
+                <button onclick="copyToClipboard()" class="flex items-center space-x-2 px-8 py-3 bg-transparent border-2 border-emerald-600/50 hover:border-emerald-500 text-emerald-400 hover:text-emerald-300 rounded-xl font-heading font-semibold transition-all duration-300 hover:bg-emerald-500/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                    <span id="copyStatus">Copy Prompt</span>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="mt-20 text-gray-600 text-xs tracking-widest uppercase font-heading">
+            Professional Grade • AI Prompt Architect
+        </div>
+
+    </div>
+
+    <script>
+        const promptData = {
+            domain: "SEO Blog",
+            content: `[Vai Trò]\nBạn sẽ đảm nhận vai trò là một AI SEO Content Architect ở đẳng cấp chuyên gia cấp cao (Senior Level). Bạn sở hữu tư duy vượt tầm của một người viết nội dung thông thường; bạn là một chiến lược gia kiến tạo tài sản kỹ thuật số, kết hợp hài hòa giữa tâm lý học hành vi người dùng và khoa học giải mã thuật toán tìm kiếm. Sự sắc bén của bạn nằm ở khả năng thao túng ngôn từ để làm hài lòng cả hệ thống trí tuệ nhân tạo của Google lẫn cảm xúc của độc giả.\n\n[Bối Cảnh]\nTrong kỷ nguyên SEO hiện đại, nơi các bản cập nhật thuật toán liên tục được triển khai nhằm loại bỏ nội dung rác và kém chất lượng, chiến lược SEO nhồi nhét truyền thống đã hoàn toàn mất đi sức mạnh. Google và các công cụ tìm kiếm hiện nay đánh giá cao những nội dung mang tính chuyên gia sâu sắc, dựa trên nền tảng Semantic SEO vững chắc và đáp ứng khắt khe các tiêu chí E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness). Bài viết này không sinh ra chỉ để thu thập lượng truy cập vô hồn; nó được kỳ vọng sẽ thiết lập một vị thế quyền lực tuyệt đối trong ngách, tối đa hóa CTR (Click-Through Rate) ngay trên trang kết quả, và tạo ra sức hút tự nhiên mạnh mẽ để củng cố Backlink Profile của toàn bộ website. \n\n[Nhiệm Vụ]\nNhiệm vụ trọng tâm của bạn là soạn thảo một bài SEO Blog mang tính đột phá. Điểm mấu chốt và bắt buộc trong quy trình này là bạn phải khởi động bằng kỹ thuật 'Reverse SERP Engineering' (Tái cấu trúc ngược kết quả tìm kiếm). Trước khi đặt bút viết bất kỳ đoạn văn nào cho nội dung chính, bạn phải tiến hành SERP Analysis một cách giả lập đối với 3 đối thủ đang chiếm lĩnh vị trí Top 3 cho từ khóa mục tiêu. Bạn cần giải mã tường tận: Tại sao thuật toán lại ưu ái xếp hạng họ? (Cấu trúc bài viết của họ ra sao, độ sâu nội dung thế nào, và cách họ thỏa mãn Search Intent). Sau khi bóc tách được "công thức chiến thắng" của họ, bạn phải thiết kế một phương pháp tiếp cận hoàn toàn khác biệt. Bài viết của bạn phải cố tình tạo ra sự tương phản thông qua một góc nhìn độc đáo hoặc phân tích sâu hơn, khiến nội dung của các đối thủ Top 3 trở nên hời hợt, dập khuôn và lỗi thời.\n\n[Quy Tắc]\nHãy tuân thủ nghiêm ngặt các tiêu chuẩn vi mô và vĩ mô sau đây:\n1. Thấu hiểu Search Intent: Giải mã chính xác mục đích tìm kiếm ẩn sau từ khóa. Đưa ra câu trả lời trực diện, sắc bén ngay từ những đoạn đầu tiên để giảm tối đa tỷ lệ thoát (Bounce Rate).\n2. Mạng lưới Semantic SEO & LSI Keywords: Tuyệt đối không nhồi nhét từ khóa. Hãy mở rộng bộ từ khóa cốt lõi bằng các LSI Keywords và cụm thực thể (Entities) liên quan mật thiết. Tạo ra một mạng lưới ngữ nghĩa tự nhiên, giúp bot tìm kiếm hiểu được chiều sâu và tính bao quát của chủ chủ đề.\n3. Hiện thực hóa E-E-A-T: Từng luận điểm phải toát lên bề dày kinh nghiệm thực chiến và thẩm quyền. Sử dụng giọng văn sắc sảo, tự tin, cung cấp các góc nhìn chuyên gia thực thụ để xây dựng lòng tin tuyệt đối từ người đọc.\n4. On-page optimization chuẩn mực: Thiết kế cấu trúc phân cấp thẻ H1, H2, H3 logic. Tối ưu hóa định dạng để nâng cao trải nghiệm người dùng (UX): tận dụng bullet points, in đậm các thuật ngữ quan trọng, và giữ các phân đoạn ngắn gọn.\n5. Chiến trúc Internal linking: Lồng ghép các văn bản neo (Anchor text) chứa từ khóa ngữ nghĩa một cách khéo léo để thực hiện internal linking đến các Pillar Page và Cluster Content liên quan, luân chuyển sức mạnh SEO (Link Juice) một cách mượt mà.\n\n[Định Dạng Đầu Ra]\nBản thiết kế cuối cùng của bạn phải được trình bày rành mạch theo cấu trúc 4 phần tách biệt:\n* Phần 1: Reverse SERP Engineering Report: Trình bày phân tích sâu sắc về lý do Top 3 đối thủ đang xếp hạng và phác thảo chiến lược khác biệt hóa cốt lõi của bạn trước khi viết.\n* Phần 2: SEO Blueprint: Danh sách chi tiết các LSI Keywords, phân loại Search Intent, và dàn ý bài viết chiến lược.\n* Phần 3: The Masterpiece Blog Post: Nội dung bài viết hoàn chỉnh, được gọt giũa tinh xảo, đáp ứng toàn bộ các tiêu chí On-page optimization, Semantic SEO và hệ tiêu chuẩn E-E-A-T.\n* Phần 4: Metadata & Technical Recommendations: Đề xuất Title tag và Meta Description với ngôn từ thôi miên nhằm tối ưu hóa CTR, kèm theo 3-5 gợi ý chiến lược cho internal linking.`
+        };
+
+        function generatePrompt() {
+            const btnLabel = document.getElementById('btnLabel');
+            const resultArea = document.getElementById('resultArea');
+            const promptContent = document.getElementById('promptContent');
+            const domainBadge = document.getElementById('domainBadge');
+
+            // Button label change
+            btnLabel.innerText = "Tạo lại";
+
+            // Populate content
+            domainBadge.innerText = promptData.domain;
+            promptContent.innerText = promptData.content;
+
+            // Trigger animation
+            resultArea.classList.remove('opacity-0', 'translate-y-8', 'pointer-events-none');
+            resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        async function copyToClipboard() {
+            const text = document.getElementById('promptContent').innerText;
+            const copyStatus = document.getElementById('copyStatus');
+            
+            try {
+                await navigator.clipboard.writeText(text);
+                copyStatus.innerText = "Đã copy!";
+                setTimeout(() => {
+                    copyStatus.innerText = "Copy Prompt";
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+    </script>
+</body>
+</html>
