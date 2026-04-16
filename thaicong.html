@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Cong Aesthetic & Logic Evaluation Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'thai-gold': '#C5A059',
+                        'thai-charcoal': '#1A1A1A',
+                        'thai-slate': '#4A6781',
+                        'thai-cream': '#FDFCFB',
+                        'thai-border': '#E5E1DA',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F8F8;
+            color: #333333;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .main-container {
+            box-shadow: 0 10px 50px rgba(0,0,0,0.05);
+        }
+        .section-accent {
+            position: relative;
+            display: inline-block;
+        }
+        .section-accent::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #4a6781;
+        }
+        .test-case-card {
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+        .test-case-card:hover {
+            border-left: 2px solid #C5A059;
+            background-color: #fcfcfc;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        th {
+            background-color: #f1f5f9;
+        }
+        tr:last-child td:first-child { border-bottom-left-radius: 8px; }
+        tr:last-child td:last-child { border-bottom-right-radius: 8px; }
+    </style>
+</head>
+<body class="font-serif">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 glass-header py-6 mb-12">
+        <div class="max-w-[900px] mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-thai-charcoal flex items-center justify-center rounded-sm">
+                    <span class="text-thai-gold font-sans font-bold text-xl">TC</span>
+                </div>
+                <span class="font-sans font-bold tracking-widest text-sm uppercase text-thai-charcoal">OPAL APP | Evaluation</span>
+            </div>
+            <div class="text-[10px] font-sans tracking-[0.2em] text-thai-slate uppercase">Internal Report 2024</div>
+        </div>
+    </header>
+
+    <main class="max-w-[900px] mx-auto px-8 py-12 mb-20 bg-white main-container rounded-lg">
+        
+        <!-- 1. Title Section -->
+        <section class="mb-16 text-center">
+            <p class="font-sans text-thai-gold tracking-[0.3em] uppercase text-xs mb-4">Hồ sơ Bộ Test Prompts cho AI Thái Công Mansion</p>
+            <h1 class="font-sans text-4xl md:text-5xl font-bold text-thai-charcoal mb-6 leading-tight">
+                Hệ thống Đánh giá Toàn diện Tư duy Thiết kế và Thẩm mỹ Thái Công
+            </h1>
+            <div class="w-24 h-1 bg-thai-gold mx-auto mb-8"></div>
+            <p class="max-w-2xl mx-auto text-lg text-gray-500 italic">
+                (Thai Cong Aesthetic & Logic Evaluation Suite)
+            </p>
+        </section>
+
+        <!-- 2. Testing Objectives -->
+        <section class="mb-16">
+            <h2 class="font-sans text-2xl font-bold text-thai-charcoal mb-8 section-accent">Mục tiêu kiểm thử</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <div class="flex gap-4">
+                    <span class="text-thai-gold font-sans font-bold">01</span>
+                    <div>
+                        <p class="font-sans font-semibold text-thai-charcoal">Measure Philosophy Understanding</p>
+                        <p class="text-sm text-gray-600">Đảm bảo AI thấu hiểu phong cách "Quiet Luxury" và tư duy thiết kế lấy con người làm trọng tâm.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-thai-gold font-sans font-bold">02</span>
+                    <div>
+                        <p class="font-sans font-semibold text-thai-charcoal">Test Technical Discipline</p>
+                        <p class="text-sm text-gray-600">Xác định khả năng tuân thủ các quy tắc bất biến (ví dụ: Grand Salon không TV).</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-thai-gold font-sans font-bold">03</span>
+                    <div>
+                        <p class="font-sans font-semibold text-thai-charcoal">Evaluate Output Quality</p>
+                        <p class="text-sm text-gray-600">Đánh giá sự tinh tế trong ngôn ngữ mô tả và chất lượng thẩm mỹ của hình ảnh tạo ra.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-thai-gold font-sans font-bold">04</span>
+                    <div>
+                        <p class="font-sans font-semibold text-thai-charcoal">Optimize User Experience</p>
+                        <p class="text-sm text-gray-600">Kiểm tra khả năng dẫn dắt khách hàng từ những mong muốn mơ hồ đến không gian sống đẳng cấp.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Usage Guide -->
+        <section class="mb-16 bg-thai-cream p-8 rounded-xl border border-thai-border">
+            <h2 class="font-sans text-2xl font-bold text-thai-charcoal mb-6">Hướng dẫn sử dụng bộ test</h2>
+            <ol class="space-y-4">
+                <li class="flex gap-4">
+                    <span class="flex-none w-6 h-6 rounded-full bg-thai-charcoal text-white flex items-center justify-center text-xs font-sans">1</span>
+                    <p><strong class="font-sans text-thai-charcoal">Chuẩn bị:</strong> Truy cập giao diện AI Thái Công Mansion trên Opal App.</p>
+                </li>
+                <li class="flex gap-4">
+                    <span class="flex-none w-6 h-6 rounded-full bg-thai-charcoal text-white flex items-center justify-center text-xs font-sans">2</span>
+                    <p><strong class="font-sans text-thai-charcoal">Thực thi:</strong> Sao chép chính xác nội dung từ phần "Input Prompt" của mỗi Test Case.</p>
+                </li>
+                <li class="flex gap-4">
+                    <span class="flex-none w-6 h-6 rounded-full bg-thai-charcoal text-white flex items-center justify-center text-xs font-sans">3</span>
+                    <p><strong class="font-sans text-thai-charcoal">Lưu ý quan trọng:</strong> Tuyệt đối không thêm yêu cầu bổ sung sau khi gửi (để test quy tắc "Input chỉ 1 lần").</p>
+                </li>
+                <li class="flex gap-4">
+                    <span class="flex-none w-6 h-6 rounded-full bg-thai-charcoal text-white flex items-center justify-center text-xs font-sans">4</span>
+                    <p><strong class="font-sans text-thai-charcoal">Đối chiếu:</strong> So sánh phản hồi của AI với "Kết quả mong đợi" và chấm điểm dựa trên "Tiêu chí đánh giá".</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 4. Test Cases -->
+        <section class="mb-16">
+            <h2 class="font-sans text-2xl font-bold text-thai-charcoal mb-10 section-accent">Bộ Test Cases</h2>
+            
+            <div class="space-y-16">
+                <!-- Category 1 -->
+                <div>
+                    <h3 class="font-sans text-xl font-semibold text-thai-slate mb-8 flex items-center gap-3">
+                        <span class="w-8 h-[1px] bg-thai-slate"></span>
+                        Kiểm tra hiểu phong cách & triết lý Thái Công Mansion
+                    </h3>
+                    
+                    <div class="space-y-10">
+                        <!-- Case 1 -->
+                        <div class="test-case-card p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-sans font-bold text-lg text-thai-charcoal">Case 1: Thẩm mỹ Quiet Luxury</h4>
+                                <span class="px-3 py-1 bg-gray-100 text-[10px] font-bold tracking-widest uppercase rounded">Philosophy</span>
+                            </div>
+                            <dl class="space-y-4">
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Input Prompt</dt>
+                                    <dd class="text-gray-700 bg-white p-3 border border-gray-100 rounded italic">"Thiết kế một không gian sảnh đón cho căn hộ penthouse theo phong cách Quiet Luxury. Tôi muốn sự sang trọng nhưng không phô trương, nhấn mạnh vào chất liệu tự nhiên."</dd>
+                                </div>
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Kết quả mong đợi</dt>
+                                    <dd class="text-gray-700">AI mô tả không gian sử dụng vật liệu cao cấp như đá marble, gỗ quý, da thật với tông màu trung tính (beige, taupe, warm grey). Tránh các chi tiết mạ vàng bóng bẩy rẻ tiền.</dd>
+                                </div>
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Tiêu chí đánh giá</dt>
+                                    <dd class="text-gray-700">Tỉ lệ các từ ngữ thể hiện sự tinh tế và am hiểu vật liệu thực tế.</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <!-- Case 2 -->
+                        <div class="test-case-card p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-sans font-bold text-lg text-thai-charcoal">Case 2: One-Shot Concept Mastery</h4>
+                                <span class="px-3 py-1 bg-gray-100 text-[10px] font-bold tracking-widest uppercase rounded">Discipline</span>
+                            </div>
+                            <dl class="space-y-4">
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Input Prompt</dt>
+                                    <dd class="text-gray-700 bg-white p-3 border border-gray-100 rounded italic">"Thiết kế một căn nhà phố diện tích 100m2, bao gồm 1 Grand Salon, 1 bếp mở, 2 phòng ngủ. Phong cách hiện đại kết hợp cổ điển Pháp. Yêu cầu chi tiết về vật liệu sàn, ánh sáng và bố cục đồ nội thất ngay trong lần phản hồi này."</dd>
+                                </div>
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Kết quả mong đợi</dt>
+                                    <dd class="text-gray-700">AI cung cấp đầy đủ concept cho tất cả các phòng được yêu cầu mà không cần khách hàng phải hỏi thêm chi tiết hay cung cấp thêm thông tin.</dd>
+                                </div>
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Tiêu chí đánh giá</dt>
+                                    <dd class="text-gray-700">Độ đầy đủ của thông tin (Diện tích, ánh sáng, vật liệu, bố cục).</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grand Salon Rules -->
+                <div>
+                    <h3 class="font-sans text-xl font-semibold text-thai-slate mb-8 flex items-center gap-3">
+                        <span class="w-8 h-[1px] bg-thai-slate"></span>
+                        Kỷ luật Grand Salon
+                    </h3>
+                    <div class="space-y-10">
+                        <!-- Case 3 -->
+                        <div class="test-case-card p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-sans font-bold text-lg text-thai-charcoal">Case 3: Quy tắc không TV & Trần cao</h4>
+                                <span class="px-3 py-1 bg-thai-charcoal text-white text-[10px] font-bold tracking-widest uppercase rounded">Mandatory Rule</span>
+                            </div>
+                            <dl class="space-y-4">
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Input Prompt</dt>
+                                    <dd class="text-gray-700 bg-white p-3 border border-gray-100 rounded italic">"Phác thảo không gian Grand Salon cho biệt thự ven biển. Đây là nơi tiếp khách và gia đình cùng xem Netflix mỗi tối."</dd>
+                                </div>
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Kết quả mong đợi</dt>
+                                    <dd class="text-gray-700">AI phải từ chối khéo léo việc đặt TV trong Grand Salon, giải thích đó là không gian đối thoại và văn hóa, gợi ý chuyển TV sang phòng Family room riêng biệt. Đề cập đến trần cao để tạo sự sang trọng.</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <!-- Case 4 -->
+                        <div class="test-case-card p-6 rounded-lg">
+                            <h4 class="font-sans font-bold text-lg text-thai-charcoal mb-4">Case 4: Ghế đối thoại & Tủ sách</h4>
+                            <dl class="space-y-4">
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Input Prompt</dt>
+                                    <dd class="text-gray-700 bg-white p-3 border border-gray-100 rounded italic">"Thiết kế nội thất cho Grand Salon diện tích 60m2. Tôi muốn nơi này thể hiện sự tri thức và hiếu khách."</dd>
+                                </div>
+                                <div>
+                                    <dt class="font-sans text-xs font-bold text-thai-gold uppercase tracking-wider mb-1">Kết quả mong đợi</dt>
+                                    <dd class="text-gray-700">Bố cục phải có tủ sách lớn cao kịch trần và các cụm ghế ngồi đối diện nhau (không tập trung vào 1 điểm như TV).</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quality & Visuals -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="test-case-card p-6 rounded-lg">
+                        <h4 class="font-sans font-bold text-lg text-thai-charcoal mb-4">Case 5: Ngôn ngữ Phù phiếm</h4>
+                        <p class="text-xs text-thai-gold font-bold uppercase tracking-widest mb-2">Input Prompt</p>
+                        <p class="text-sm italic mb-4 text-gray-600">"Viết một đoạn giới thiệu về concept 'Ánh sáng của Đế vương' cho một phòng ăn cao cấp."</p>
+                        <p class="text-xs text-thai-gold font-bold uppercase tracking-widest mb-2">Tiêu chí</p>
+                        <p class="text-sm text-gray-700">Sử dụng ngôn ngữ chuyên nghiệp, giàu sức gợi cảm, thuật ngữ chuyên ngành ánh sáng (accent lighting, chandelier).</p>
+                    </div>
+
+                    <div class="test-case-card p-6 rounded-lg">
+                        <h4 class="font-sans font-bold text-lg text-thai-charcoal mb-4">Case 6: Visual Fidelity</h4>
+                        <p class="text-xs text-thai-gold font-bold uppercase tracking-widest mb-2">Input Prompt</p>
+                        <p class="text-sm italic mb-4 text-gray-600">"Tạo hình ảnh 3D cho một góc thư viện trong dinh thự, ánh sáng vàng ấm từ đèn bàn cổ điển, chất liệu nhung xanh sẫm và gỗ óc chó."</p>
+                        <p class="text-xs text-thai-gold font-bold uppercase tracking-widest mb-2">Tiêu chí</p>
+                        <p class="text-sm text-gray-700">Hình ảnh sắc nét, ánh sáng có chiều sâu, chất liệu nhung và gỗ hiển thị rõ vân và độ bóng thực tế.</p>
+                    </div>
+                </div>
+
+                <!-- Continued Cases -->
+                <div class="space-y-6">
+                    <div class="border-t border-gray-100 pt-8">
+                        <h4 class="font-sans font-bold text-lg text-thai-charcoal mb-2">Case 7-10: Nâng cao & Biến hóa</h4>
+                        <p class="text-gray-600 text-sm mb-6">Đánh giá khả năng suy luận, linh hoạt trong khuôn khổ và các không gian chuyên biệt (Master Bedroom, Outdoor Penthouse).</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded text-sm">
+                                <span class="font-bold text-thai-slate">Case 8:</span> Tư duy suy luận khi thông tin mơ hồ. AI phải đặt câu hỏi ngược lại khách hàng.
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded text-sm">
+                                <span class="font-bold text-thai-slate">Case 10:</span> Outdoor/Terrace. Sử dụng "Outdoor lounge", "Mood lighting".
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Evaluation Summary Table -->
+        <section class="mb-16">
+            <h2 class="font-sans text-2xl font-bold text-thai-charcoal mb-8 section-accent">Bảng tóm tắt đánh giá</h2>
+            <div class="overflow-x-auto rounded-lg border border-gray-200">
+                <table class="w-full text-left font-sans text-sm">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200">
+                            <th class="p-4 font-bold text-thai-charcoal">Tiêu chí (Criterion)</th>
+                            <th class="p-4 font-bold text-thai-charcoal text-center">Trọng số</th>
+                            <th class="p-4 font-bold text-thai-charcoal text-center">Điểm (1-10)</th>
+                            <th class="p-4 font-bold text-thai-charcoal">Nhận xét</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="p-4 font-medium">Độ chính xác Triết lý</td>
+                            <td class="p-4 text-center">30%</td>
+                            <td class="p-4 text-center border-x border-gray-50"></td>
+                            <td class="p-4 text-gray-500 italic text-xs">Understanding of Quiet Luxury, Thai Công philosophy.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Tính Kỷ luật (No TV, etc.)</td>
+                            <td class="p-4 text-center">20%</td>
+                            <td class="p-4 text-center border-x border-gray-50"></td>
+                            <td class="p-4 text-gray-500 italic text-xs">Adherence to forbidden and mandatory rules.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Chất lượng Ngôn ngữ</td>
+                            <td class="p-4 text-center">15%</td>
+                            <td class="p-4 text-center border-x border-gray-50"></td>
+                            <td class="p-4 text-gray-500 italic text-xs">Professional, authoritative tone.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Chất lượng Hình ảnh</td>
+                            <td class="p-4 text-center">20%</td>
+                            <td class="p-4 text-center border-x border-gray-50"></td>
+                            <td class="p-4 text-gray-500 italic text-xs">Realism, material detail.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Tính Logic (Input 1 lần)</td>
+                            <td class="p-4 text-center">15%</td>
+                            <td class="p-4 text-center border-x border-gray-50"></td>
+                            <td class="p-4 text-gray-500 italic text-xs">Handling of complex requests in a single response.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <div class="bg-thai-charcoal text-white px-8 py-4 rounded-lg flex items-baseline gap-4">
+                    <span class="font-sans text-xs uppercase tracking-widest opacity-70">Tổng điểm trung bình:</span>
+                    <span class="text-3xl font-bold font-sans text-thai-gold">____ / 10</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Improvement Suggestions -->
+        <section>
+            <h2 class="font-sans text-2xl font-bold text-thai-charcoal mb-8 section-accent">Gợi ý cải thiện</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+                    <h5 class="font-sans font-bold text-thai-slate mb-3 uppercase text-xs tracking-widest">Về Dữ liệu (Data)</h5>
+                    <p class="text-sm text-gray-600">Cần tích hợp danh mục các thương hiệu nội thất xa xỉ (Baccarat, Hermès, Christopher Guy...) để AI đưa vào các mô tả cụ thể.</p>
+                </div>
+                <div class="p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+                    <h5 class="font-sans font-bold text-thai-slate mb-3 uppercase text-xs tracking-widest">Về Logic</h5>
+                    <p class="text-sm text-gray-600">Nâng cao khả năng giải thích "Tại sao" khi từ chối yêu cầu của khách (ví dụ: tại sao không TV ở Grand Salon) để mang tính thuyết phục và giáo dục thẩm mỹ.</p>
+                </div>
+                <div class="p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+                    <h5 class="font-sans font-bold text-thai-slate mb-3 uppercase text-xs tracking-widest">Về Hình ảnh (Visuals)</h5>
+                    <p class="text-sm text-gray-600">Tăng cường sự tương tác giữa ánh sáng tự nhiên và nhân tạo trong môi trường 3D để tạo "Luxury vibe" đặc trưng hơn.</p>
+                </div>
+                <div class="p-6 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
+                    <h5 class="font-sans font-bold text-thai-slate mb-3 uppercase text-xs tracking-widest">Về Tương tác</h5>
+                    <p class="text-sm text-gray-600">AI nên chủ động gợi ý các giải pháp "people-centric" mà khách chưa nghĩ tới (hệ thống mùi hương, âm thanh đa vùng).</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Action Button for Export (Simulation) -->
+    <div class="fixed bottom-8 right-8 print:hidden">
+        <button class="bg-thai-charcoal hover:bg-black text-thai-gold w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span class="absolute right-20 bg-white text-thai-charcoal px-4 py-2 rounded shadow-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Xuất Báo Cáo (PDF/Word)</span>
+        </button>
+    </div>
+
+</body>
+</html>
