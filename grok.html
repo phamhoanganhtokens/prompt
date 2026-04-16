@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Prompt Cho Opal App - Báo Cáo Kiến Trúc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif-title': ['"Playfair Display"', 'Times New Roman', 'serif'],
+                        'serif-body': ['"Lora"', 'Times New Roman', 'serif'],
+                    },
+                    colors: {
+                        executive: {
+                            gold: '#C5A059',
+                            dark: '#1A1A1A',
+                            grey: '#4A4A4A',
+                            bg: '#FDFDFD',
+                            divider: '#E5E7EB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F8F8;
+            color: #1A1A1A;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.8;
+        }
+        .paper-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 80px 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #EDEDED;
+        }
+        h1 {
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            border-bottom: 3px solid #C5A059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            color: #C5A059;
+            border-left: 4px solid #C5A059;
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 1.5rem;
+        }
+        h3 {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .prompt-box {
+            background-color: #F9F9F9;
+            border: 1px solid #E5E7EB;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+            font-style: italic;
+        }
+        .prompt-box::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 60px;
+            color: #E5E7EB;
+            font-family: serif;
+            line-height: 1;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        .bullet-list li::before {
+            content: "•";
+            color: #C5A059;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .footer-date {
+            margin-top: 80px;
+            border-top: 1px solid #EEE;
+            padding-top: 20px;
+            text-align: right;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .paper-container {
+                margin: 0;
+                padding: 40px 20px;
+                box-shadow: none;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F8F8F8] antialiased">
+
+    <main class="paper-container">
+        <!-- Main Title -->
+        <header>
+            <h1 class="text-4xl md:text-5xl font-bold text-center">
+                MASTER PROMPT CHO OPAL APP: <br>
+                <span class="text-3xl md:text-4xl font-normal mt-2 block">PHÂN TÍCH KIẾN TRÚC & TẠO PROMPT KIỂM THỬ</span>
+            </h1>
+        </header>
+
+        <!-- Section 1 -->
+        <section>
+            <h2>I. BÁO CÁO PHÂN TÍCH KIẾN TRÚC</h2>
+            
+            <h3>1. Phong cách kiến trúc chính:</h3>
+            <p>Công trình thể hiện phong cách Tân cổ điển (Neoclassical) mạnh mẽ, pha trộn với ảnh hưởng của French Chateau và Beaux-Arts, thể hiện qua sự đối xứng tuyệt đối, tỷ lệ hình học chính xác và các chi tiết trang trí xa hoa.</p>
+
+            <h3>2. Đặc điểm nổi bật:</h3>
+            <ul class="bullet-list">
+                <li><strong>Mái (Roof):</strong> Đặc trưng bởi hệ mái Mansard màu xanh biển đậm với độ dốc lớn, tích hợp các cửa sổ áp mái (dormer) thanh lịch. Mái được trang trí bằng các đầu hồi chạm khắc tinh xảo, mạ vàng.</li>
+                <li><strong>Cột (Columns):</strong> Mặt tiền sử dụng các hàng cột cổ điển thông tầng, bao gồm cả cột tròn và cột áp tường (pilasters). Chúng không chỉ đóng vai trò kết cấu mà còn tạo nhịp điệu theo phương đứng, nhấn mạnh sự bề thế của sảnh chính.</li>
+                <li><strong>Vật liệu (Materials):</strong> Ngoại thất chủ yếu sử dụng đá tự nhiên sáng màu hoặc vữa cao cấp. Mái nhà có vẻ được lợp bằng đá phiến hoặc hợp kim cao cấp. Các khu vực lát sân, bậc tam cấp và đài phun nước được hoàn thiện bằng đá cẩm thạch trắng.</li>
+                <li><strong>Màu sắc (Colors):</strong> Tông màu chủ đạo là trắng kem trang nhã, tạo sự tương phản mạnh mẽ nhưng hài hòa với mái ngói xanh đậm. Các chi tiết mạ vàng được điểm xuyết chiến lược trên các bức phù điêu, cổng và hàng rào, tăng cường vẻ quý tộc và vương giả.</li>
+                <li><strong>Chi tiết trang trí (Decorative details):</strong> Công trình sở hữu các yếu tố trang trí tinh tế bao gồm các tấm phù điêu, lan can lục bình bao quanh ban công và sân thượng, cùng một đài phun nước được điêu khắc tỉ mỉ ở vị trí trung tâm. Hàng rào gây ấn tượng với các họa tiết hoa văn mạ vàng cầu kỳ.</li>
+            </ul>
+
+            <h3>3. Bố cục tổng thể và quy mô:</h3>
+            <p>Công trình có quy mô đồ sộ và tráng lệ, tương đương với một cung điện tư nhân. Bố cục tuân thủ nghiêm ngặt tính đối xứng qua trục trung tâm. Trục này dẫn dắt tầm nhìn của người xem từ cổng vào, đi qua hàng rào, băng qua đài phun nước nhiều tầng, lên cầu thang rộng và tiến thẳng vào sảnh chính của khối nhà trung tâm.</p>
+
+            <h3>4. Mối tương quan với cảnh quan xung quanh:</h3>
+            <p>Dinh thự đặt trong một bối cảnh có sự tương phản cao nhưng đầy dụng ý nghệ thuật. Khu vực phía trước và xung quanh là vườn kiểu Pháp (parterre) với cây xanh được cắt tỉa hình học chính xác, kết hợp với mặt nước rộng tạo cảm giác tách biệt và trang nghiêm. Sự trật tự tỉ mỉ do con người tạo ra ở tiền cảnh làm nền tảng để tôn vinh vẻ đẹp hùng vĩ, hoang sơ của những dãy núi rừng trùng điệp ở hậu cảnh.</p>
+
+            <h3>5. Không gian chức năng (Suy luận):</h3>
+            <ul class="bullet-list">
+                <li><strong>Khối nhà chính (Main building):</strong> Với các cửa vòm lớn và vị trí trung tâm, khu vực này có khả năng là sảnh đón chính, phòng khách đại tiệc và các không gian sinh hoạt chung cao cấp.</li>
+                <li><strong>Các cánh nhà phụ (hai bên) (Side wings):</strong> Các không gian đa tầng mở rộng sang hai bên có thể là nơi đặt các phòng ngủ chính (master suites), phòng khách, thư viện hoặc các phòng giải trí riêng tư.</li>
+                <li><strong>Không gian ngoại khu (Exterior spaces):</strong> Sân trước rộng lớn và đường dẫn vào được thiết kế cho việc di chuyển của các dòng xe sang trọng. Vườn thượng uyển và đài phun nước không chỉ điều hòa vi khí hậu mà còn là không gian dạo bộ và tổ chức sự kiện ngoài trời.</li>
+            </ul>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+            <h2>II. CÂU HỎI KIỂM THỬ (PROMPT TEST)</h2>
+            <div class="prompt-box">
+                <p class="italic text-gray-700">
+                    "Hãy đóng vai trò là một chuyên gia AI kiến trúc chuyên biệt về bất động sản và thiết kế mặt bằng 3D. Nhiệm vụ của bạn là thực hiện quy trình mô phỏng và tái hiện một dinh thự cao cấp dựa trên các tiêu chí kiểm tra cụ thể sau đây.
+                    <br><br>
+                    <strong>Phong cách và đặc điểm kiến trúc:</strong> Thiết kế một dinh thự theo phong cách Tân cổ điển Pháp (French Neoclassical) và Chateauesque với sự đối xứng hoàn hảo qua trục trung tâm. Mặt tiền sử dụng chất liệu đá vôi trắng hoặc cẩm thạch, kết hợp với các chi tiết trang trí mạ vàng tinh xảo trên các gờ phào chỉ, đầu cột Corinthian và khung cửa sổ vòm. Hệ mái là mái Mansard màu xanh biển đậm đặc trưng, được trang trí bằng các đường viền và đỉnh mái mạ vàng, cùng các cửa sổ áp mái đối xứng.
+                    <br><br>
+                    <strong>Quy mô và bố cục:</strong> Dinh thự có quy mô lớn với 3 tầng chính và các ban công rộng có lan can bằng đá. Cấu trúc gồm một khối nhà trung tâm nổi bật và hai cánh nhà mở rộng sang hai bên, tạo nên một mặt bằng hình chữ U hoặc hình khối ngang bề thế.
+                    <br><br>
+                    <strong>Cảnh quan và hạ tầng xung quanh:</strong> Sân trước được thiết kế với đài phun nước bằng đá trắng mạ vàng nhiều tầng làm tâm điểm. Khu vườn xung quanh phải tuân thủ phong cách vườn Pháp (parterre) với thảm cỏ được cắt tỉa thành các họa tiết hình học đối xứng. Đặc biệt, dinh thự được bao quanh bởi một hệ thống mặt nước tĩnh lặng hoặc hào nước hiện đại giúp phản chiếu toàn bộ công trình. Hệ thống tường bao phải sử dụng các tấm panel kim loại hoa văn mạ vàng đặt giữa các trụ đá trang trí bằng bình gốm đá.
+                    <br><br>
+                    <strong>Quy trình thực hiện từng bước:</strong><br>
+                    Bước 1: Phân tích cấu trúc và dựng khối chính. Xác định trục đối xứng trung tâm để thiết lập tỷ lệ khối nhà chính và hai cánh nhà sao cho đảm bảo tính uy nghi của công trình.<br>
+                    Bước 2: Chi tiết hóa bề mặt ngoại thất. Áp dụng các chi tiết kiến trúc như gờ phào, cột trụ và hệ thống cửa vòm. Tích hợp các họa tiết mạ vàng lên các điểm nhấn trang trí ngoại thất và hệ mái Mansard.<br>
+                    Bước 3: Thiết lập vật liệu và môi trường ánh sáng. Sử dụng vật liệu đá có độ chi tiết cao và kim loại phản xạ cho các phần trang trí. Cài đặt ánh sáng môi trường tự nhiên để làm nổi bật sự sang trọng của vật liệu và màu sắc.<br>
+                    Bước 4: Thiết kế mặt bằng cảnh quan sân vườn. Sắp xếp vị trí đài phun nước, các mảng xanh cắt tỉa và hồ nước bao quanh để tạo sự hòa quyện giữa kiến trúc và thiên nhiên.<br>
+                    Bước 5: Rendering và tối ưu hóa hình ảnh 3D. Kết xuất hình ảnh từ góc nhìn chính diện với độ phân giải cao, tập trung vào độ bóng của mặt nước và sự sắc nét của các chi tiết mạ vàng.
+                    <br><br>
+                    <strong>Yêu cầu kỹ thuật:</strong> Sản phẩm cuối cùng phải thể hiện được sự chính xác về tỷ lệ kiến trúc, sự tinh tế trong việc kết hợp vật liệu đá và vàng, cùng một không gian sống đẳng cấp, biệt lập."
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section>
+            <h2>III. GIẢI THÍCH HIỆU QUẢ CỦA PROMPT TEST</h2>
+            <p>Hiệu quả của AI được đánh giá dựa trên ba tiêu chí then chốt:</p>
+            
+            <ul class="bullet-list">
+                <li>
+                    <strong>Khả năng nhận diện và tái hiện chi tiết kiến trúc cổ điển phức tạp:</strong> 
+                    Đây là tiêu chí quan trọng nhất. AI phải kết xuất chính xác các yếu tố trang trí phức tạp như mái Mansard, các hàng cột đối xứng và các họa tiết mạ vàng. Việc tái hiện đúng các tỷ lệ này chứng minh khả năng nhất quán về hình học và sự hiểu biết về các chuẩn mực kiến trúc cổ điển mà không bị biến dạng.
+                </li>
+                <li>
+                    <strong>Khả năng suy luận và thiết kế mặt bằng từ góc nhìn ngoại thất:</strong> 
+                    Được đánh giá qua cách AI xử lý cấu trúc đối xứng của dinh thự. Từ hình khối bên ngoài, mô hình phải suy luận logic được cách bố trí không gian nội thất, chẳng hạn như vị trí của sảnh trung tâm và các khu chức năng ở hai cánh. Điều này kiểm tra xem AI có thực sự hiểu mối quan hệ giữa hình thức bên ngoài và công năng bên trong, thay vì chỉ tạo ra những hình ảnh đẹp mắt nhưng phi logic.
+                </li>
+                <li>
+                    <strong>Sự kết hợp giữa cảnh quan và yếu tố phong thủy trong một tổng thể sang trọng:</strong> 
+                    Đây là điểm đánh giá cuối cùng mang tính quyết định. Việc sắp xếp công trình theo các nguyên tắc như "tọa sơn hướng thủy" (lưng tựa núi, mặt hướng nước) đòi hỏi AI phải lồng ghép được các yếu tố địa lý vào kiến trúc. Khả năng bố trí sân vườn và mặt nước hài hòa, vừa đảm bảo tính thẩm mỹ sang trọng vừa tạo ra sự cân bằng về năng lượng, xác định trình độ của mô hình trong việc xử lý các yêu cầu thiết kế đa mục tiêu phức tạp.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Date Footer -->
+        <footer class="footer-date">
+            Ngày 16 tháng 04 năm 2026
+        </footer>
+    </main>
+
+    <script>
+        // Subtle entrance animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = `opacity 0.8s ease-out ${index * 0.2}s, transform 0.8s ease-out ${index * 0.2}s`;
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
