@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opal Test App – Trí Tuệ Toàn Diện</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        opal: {
+                            bg: '#fcfcfc',
+                            text: '#2d3436',
+                            accent: '#636e72',
+                            border: '#e1e1e1'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Times New Roman"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fcfcfc;
+            color: #2d3436;
+            font-family: "Times New Roman", serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: justify;
+        }
+        h1 {
+            font-size: 2.75rem;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            color: #1a1a1a;
+            border-bottom: 2px solid #2d3436;
+            padding-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #1a1a1a;
+            border-top: 1px double #ccc;
+            padding-top: 2rem;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: #444;
+            border-left: 4px solid #2d3436;
+            padding-left: 1rem;
+        }
+        .test-section {
+            margin-bottom: 4rem;
+        }
+        .answer-block {
+            margin-bottom: 1.5rem;
+        }
+        .label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: #000;
+        }
+        .quote {
+            font-style: italic;
+            text-align: center;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            max-width: 90%;
+            display: block;
+            color: #555;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        li::before {
+            content: "♦";
+            position: absolute;
+            left: 0;
+            color: #2d3436;
+        }
+        .bullet-point::before {
+            content: "•";
+        }
+        .summary-box {
+            background: #fff;
+            padding: 3rem;
+            border: 1px solid #e1e1e1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-top: 5rem;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .content-container { padding: 2rem 1rem; }
+            .summary-box { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content-container">
+        <header>
+            <h1>🔥 TEST OPAL APP – TRÍ TUỆ TOÀN DIỆN <br><span style="font-size: 0.7em; font-weight: normal;">(Phạm Hoàng Anh Tokens)</span></h1>
+        </header>
+
+        <!-- PHẦN 1 -->
+        <section>
+            <h2>PHẦN 1: 10 CÂU HỎI VÀ CÂU TRẢ LỜI ĐỊNH SẴN<br>(4 TRỤ CỘT IQ, EQ, CQ, AQ)</h2>
+
+            <!-- Câu 1 -->
+            <div class="test-section">
+                <h3>Câu hỏi 1 (IQ - Tư duy Logic): Bạn đối mặt với một dãy số có quy luật phức tạp và cần tìm ra số tiếp theo trong 30 giây. Bạn sẽ làm gì?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Khả năng nhận diện mô hình (pattern recognition) và tốc độ xử lý thông tin dưới áp lực thời gian.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn sở hữu tư duy phân tích nhạy bén và khả năng tập trung cao độ.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Rèn luyện thêm các bài tập toán học tổ hợp và trò chơi trí tuệ để tăng cường liên kết thần kinh.</p>
+                </div>
+                <p class="quote">"Logic sẽ đưa anh từ A đến B, trí tưởng tượng sẽ đưa anh tới mọi nơi." – Albert Einstein.</p>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="test-section">
+                <h3>Câu hỏi 2 (EQ - Trí tuệ Cảm xúc): Khi một thành viên trong nhóm đang mất bình tĩnh vì áp lực công việc, phản ứng của bạn là gì?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Sự thấu cảm và kỹ năng điều tiết cảm xúc trong môi trường tập thể.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn có khả năng kết nối và xây dựng lòng tin, tạo ra môi trường làm việc an toàn.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Thực hành lắng nghe chủ động (Active Listening) và học cách phản hồi thay vì phản ứng.</p>
+                </div>
+                <p class="quote">"Con người sẽ quên những gì bạn nói, nhưng họ sẽ không bao giờ quên cảm giác mà bạn mang lại cho họ." – Maya Angelou.</p>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="test-section">
+                <h3>Câu hỏi 3 (CQ - Trí tuệ Sáng tạo): Nếu được yêu cầu tìm 10 công dụng khác nhau của một chiếc kẹp giấy ngoài việc kẹp tài liệu, bạn sẽ nghĩ đến điều gì?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Khả năng tư duy phân kỳ (divergent thinking) và phá vỡ các định kiến chức năng.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Trí tưởng tượng của bạn phong phú, không bị gò bó bởi những quy tắc thông thường.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Thử thách bản thân với phương pháp "Brainstorming" mỗi ngày cho các vấn đề nhỏ nhất.</p>
+                </div>
+                <p class="quote">"Sáng tạo là khi trí thông minh cảm thấy thích thú." – Albert Einstein.</p>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="test-section">
+                <h3>Câu hỏi 4 (AQ - Chỉ số Vượt khó): Bạn sẽ làm gì khi dự án tâm huyết nhất bị từ chối vào phút chót?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Khả năng phục hồi (resilience) và thái độ đối mặt với thất bại.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Sự kiên tâm và bản lĩnh giúp bạn biến nghịch cảnh thành bàn đạp cho sự phát triển.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Phân tích nguyên nhân thất bại khách quan, lập kế hoạch "B" và duy trì tư duy tăng trưởng.</p>
+                </div>
+                <p class="quote">"Thành công không phải là cuối cùng, thất bại không phải là chết chóc: lòng can đảm đi tiếp mới là quan trọng." – Winston Churchill.</p>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="test-section">
+                <h3>Câu hỏi 5 (IQ - Giải quyết vấn đề): Một quy trình làm việc cũ đang gây lãng phí thời gian, bạn xử lý thế nào?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Tư duy tối ưu hóa và khả năng hệ thống hóa quy trình.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn có tố chất của một nhà quản trị chiến lược, luôn hướng tới hiệu quả cao nhất.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Học các mô hình quản lý như Lean hoặc Six Sigma để nâng cao tư duy hệ thống.</p>
+                </div>
+                <p class="quote">"Làm việc thông minh hơn, không phải chăm chỉ hơn." – Allan F. Mogensen.</p>
+            </div>
+
+            <!-- Câu 6 -->
+            <div class="test-section">
+                <h3>Câu hỏi 6 (EQ - Quản lý xung đột): Bạn và đối tác có mâu thuẫn lợi ích sâu sắc, bạn ưu tiên điều gì?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Kỹ năng đàm phán và khả năng tìm kiếm điểm chung (win-win mindset).</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Trí tuệ xã hội giúp bạn duy trì các mối quan hệ bền vững ngay cả trong căng thẳng.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Nghiên cứu về tâm lý học hành vi để hiểu rõ động cơ của đối phương.</p>
+                </div>
+                <p class="quote">"Hòa bình không phải là sự vắng bóng của xung đột, mà là khả năng xử lý xung đột bằng các biện pháp hòa bình." – Ronald Reagan.</p>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="test-section">
+                <h3>Câu hỏi 7 (CQ - Đổi mới): Bạn làm thế nào để biến một ý tưởng điên rồ thành một kế hoạch khả thi?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Khả năng kết nối giữa sự sáng tạo bay bổng và thực tế thực thi.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn là người kiến tạo tương lai, có khả năng biến những điều không thể thành có thể.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Áp dụng mô hình "Design Thinking" để thử nghiệm và hoàn thiện ý tưởng.</p>
+                </div>
+                <p class="quote">"Những người đủ điên rồ để nghĩ rằng mình có thể thay đổi thế giới chính là những người làm được điều đó." – Steve Jobs.</p>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="test-section">
+                <h3>Câu hỏi 8 (AQ - Thích nghi): Công ty thay đổi hoàn toàn công nghệ cốt lõi, bạn cảm thấy thế nào?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Độ linh hoạt nhận thức (cognitive flexibility) và khả năng học hỏi không ngừng.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Khả năng thích ứng nhanh giúp bạn luôn dẫn đầu trong kỷ nguyên số biến động.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Xây dựng thói quen "Học - Quên - Học lại" (Learn - Unlearn - Relearn).</p>
+                </div>
+                <p class="quote">"Kẻ sống sót không phải là kẻ mạnh nhất hay thông minh nhất, mà là kẻ thích nghi tốt nhất với thay đổi." – Charles Darwin.</p>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="test-section">
+                <h3>Câu hỏi 9 (Kết hợp IQ & CQ): Bạn phải thiết kế một trò chơi giáo dục cho trẻ em, yếu tố nào quan trọng nhất?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Sự cân bằng giữa tính logic của kiến thức và tính hấp dẫn của sự sáng tạo.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn có khả năng tư duy đa chiều, kết hợp nhuần nhuyễn giữa trí tuệ và nghệ thuật.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Tìm hiểu về "Gamification" để ứng dụng vào công việc và cuộc sống.</p>
+                </div>
+                <p class="quote">"Chơi đùa là hình thức cao nhất của sự nghiên cứu." – Albert Einstein.</p>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="test-section">
+                <h3>Câu hỏi 10 (Kết hợp EQ & AQ): Bạn dẫn dắt một đội ngũ đang mất phương hướng sau một cuộc khủng hoảng, bạn bắt đầu từ đâu?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Khả năng lãnh đạo truyền cảm hứng và bản lĩnh đứng vững trong bão tố.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn là điểm tựa tinh thần vững chắc, có khả năng vực dậy sức mạnh tập thể.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Tổ chức các buổi đối thoại mở để giải tỏa tâm lý và xác lập lại mục tiêu ngắn hạn.</p>
+                </div>
+                <p class="quote">"Người lãnh đạo là người biết đường, đi đường đó và chỉ đường đó." – John C. Maxwell.</p>
+            </div>
+        </section>
+
+        <!-- PHẦN 2 -->
+        <section>
+            <h2>PHẦN 2: 3 CÂU HỎI VÀ CÂU TRẢ LỜI NGẪU NHIÊN</h2>
+
+            <!-- Câu 11 -->
+            <div class="test-section">
+                <h3>Câu hỏi 11: Nếu bạn là một màu sắc, bạn là màu gì và tại sao?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Sự tự nhận thức (self-awareness) và khả năng ẩn dụ hóa tính cách.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn có chiều sâu tâm hồn và khả năng biểu đạt bản thân độc đáo.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Dành thời gian viết nhật ký để khám phá thêm các khía cạnh tiềm ẩn của bản thân.</p>
+                </div>
+                <p class="quote">"Hãy là chính mình, những người khác đã là họ rồi." – Oscar Wilde.</p>
+            </div>
+
+            <!-- Câu 12 -->
+            <div class="test-section">
+                <h3>Câu hỏi 12: Trong một khu rừng xa lạ, bạn chỉ có một chiếc la bàn hỏng và một bản đồ cũ, bạn sẽ làm gì?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Bản năng sinh tồn và tư duy giải quyết vấn đề trong điều kiện thiếu hụt nguồn lực.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn là người thực tế, quyết đoán và có khả năng định hướng tốt trong sự mơ hồ.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Rèn luyện kỹ năng quan sát chi tiết và tin tưởng vào trực giác có cơ sở.</p>
+                </div>
+                <p class="quote">"Đừng đi theo nơi con đường dẫn tới, hãy đi nơi không có lối và để lại dấu chân." – Ralph Waldo Emerson.</p>
+            </div>
+
+            <!-- Câu 13 -->
+            <div class="test-section">
+                <h3>Câu hỏi 13: Bạn nghĩ gì về sự tác động của AI đối với trí tuệ con người trong tương lai?</h3>
+                <div class="answer-block">
+                    <span class="label">Phân tích vấn đề theo 4 trụ cột:</span>
+                    <ul>
+                        <li>Tầm nhìn chiến lược và khả năng đánh giá các xu hướng vĩ mô.</li>
+                    </ul>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Kết luận cốt lõi và bài học sâu sắc:</span>
+                    <p>Bạn có tư duy tiến bộ, sẵn sàng đón nhận sự cộng hưởng giữa người và máy.</p>
+                </div>
+                <div class="answer-block">
+                    <span class="label">Đề xuất hành động cụ thể:</span>
+                    <p>Chủ động học cách làm chủ các công cụ AI để nâng cao năng suất cá nhân.</p>
+                </div>
+                <p class="quote">"Máy móc sẽ làm những việc lặp đi lặp lại, con người sẽ làm những việc sáng tạo và đầy yêu thương."</p>
+            </div>
+        </section>
+
+        <!-- PHẦN 3 -->
+        <section class="summary-box">
+            <h2 style="border:none; margin-top:0; padding-top:0;">PHẦN 3: TỔNG KẾT CUỐI CÙNG</h2>
+            
+            <div class="answer-block">
+                <span class="label">Đánh giá tổng thể:</span>
+                <p>Bài trắc nghiệm Opal Test cho thấy bạn là một cá nhân có sự phát triển khá đồng đều giữa các chỉ số IQ, EQ, CQ và AQ. Đây là nền tảng của một <strong>Master AI Agent</strong> – người không chỉ giỏi chuyên môn mà còn có tâm hồn nhạy cảm, trí tuệ sáng tạo và ý chí sắt đá.</p>
+            </div>
+
+            <div class="answer-block">
+                <span class="label">Thông điệp cốt lõi:</span>
+                <p>Trí tuệ toàn diện không phải là đích đến, mà là hành trình tự hoàn thiện mỗi ngày. Việc cân bằng giữa cái đầu lạnh (IQ, AQ) và trái tim nóng (EQ, CQ) sẽ giúp bạn khai phá tối đa tiềm năng bản thân.</p>
+            </div>
+
+            <div class="answer-block">
+                <span class="label">Lời chúc:</span>
+                <p>Chúc bạn luôn giữ vững ngọn lửa đam mê, không ngừng học hỏi và trở thành phiên bản xuất sắc nhất của chính mình trong kỷ nguyên trí tuệ mới.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; border-top: 1px solid #eee; padding-top: 2rem;">
+                <p class="highlight" style="font-size: 1.25rem;">"Khám phá tiềm năng - Làm chủ tương lai cùng Opal Test."</p>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #999;">
+            --- Kết thúc tài liệu kiểm tra ---
+        </div>
+    </main>
+
+</body>
+</html>
