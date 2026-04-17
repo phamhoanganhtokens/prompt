@@ -1,235 +1,339 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Opal Pro</title>
+    <title>Báo Cáo Kiểm Thử Hệ Thống Opal App</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        emerald: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            200: '#a7f3d0',
-                            300: '#6ee7b7',
-                            400: '#34d399',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b',
-                            950: '#022c22',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                        },
-                        charcoal: '#0a0a0a',
-                        surface: '#121212',
-                    },
                     fontFamily: {
-                        heading: ['Montserrat', 'sans-serif'],
-                        body: ['Outfit', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        'serif': ['"Times New Roman"', 'serif'],
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out forwards',
-                        'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'pulse-glow': 'pulseGlow 2s infinite alternate',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        pulseGlow: {
-                            '0%': { boxShadow: '0 0 5px rgba(16, 185, 129, 0.2)' },
-                            '100%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)' },
-                        }
+                    colors: {
+                        'paper': '#ffffff',
+                        'ink': '#000000',
                     }
                 }
             }
         }
     </script>
     <style>
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none; }
+        }
+        
         body {
-            background-color: #0a0a0a;
-            color: #e5e7eb;
-            overflow-x: hidden;
+            background-color: #f4f4f4;
+            color: #000;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
         }
 
-        .glass-panel {
-            background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        .document-page {
+            background-color: white;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 80px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
         }
 
-        .emerald-gradient {
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        h1, h2, h3 {
+            font-weight: bold;
+            font-family: "Times New Roman", Times, serif;
+            text-transform: uppercase;
         }
 
-        .gold-shimmer {
-            background: linear-gradient(90deg, #d97706 0%, #fbbf24 50%, #d97706 100%);
-            background-size: 200% auto;
-            animation: shimmer 3s linear infinite;
+        h1 {
+            text-align: center;
+            font-size: 14px; /* Slightly larger for main title but kept formal */
+            margin-bottom: 40px;
+            line-height: 1.4;
         }
 
-        @keyframes shimmer {
-            to { background-position: 200% center; }
+        h2 {
+            font-size: 12px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 4px;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1f2937;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #059669;
+        h3 {
+            font-size: 12px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: none;
         }
 
-        /* Toggle Switch Custom */
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #10b981;
+        p {
+            text-align: justify;
+            margin-bottom: 12px;
         }
-        .toggle-checkbox:checked + .toggle-label .toggle-dot {
-            transform: translateX(100%);
+
+        ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        li {
+            text-align: justify;
+            margin-bottom: 8px;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            font-size: 12px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 8px 12px;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td {
+            text-align: justify;
+        }
+
+        .footer-note {
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            font-style: italic;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .document-page {
+                padding: 30px 20px;
+            }
+            body {
+                padding: 10px;
+            }
         }
     </style>
 </head>
-<body class="font-body selection:bg-emerald-500/30">
+<body>
 
-    <div class="max-w-4xl mx-auto px-4 py-12 md:py-20 flex flex-col items-center min-h-screen">
+    <main class="document-page">
+        <!-- Main Report Title -->
+        <h1>BÁO CÁO KIỂM THỬ HỆ THỐNG OPAL APP - PHIÊN BẢN TỰ ĐỘNG</h1>
+
+        <p>Tài liệu này trình bày báo cáo kiểm thử toàn diện cho hệ thống tự động Opal App, được trình bày theo phong cách văn bản chuyên nghiệp, tối ưu hóa cho khả năng đọc và tuân thủ các yêu cầu định dạng cụ thể.</p>
+
+        <!-- Kịch bản 1 -->
+        <h2>KỊCH BẢN 1: KHỞI TẠO VÀ PHÂN CÔNG NHIỆM VỤ</h2>
+        <p><strong>Tóm tắt:</strong> Hệ thống khởi tạo dự án "Modern Townhouse District 2" với các thông số cụ thể: diện tích (100m²), quy mô (3 tầng), và phong cách tối giản. CEO AI phân công nhiệm vụ cho Phó Giám đốc Nghiên cứu (phân tích thị trường, khí hậu) và Phó Giám đốc Thiết kế (nghiên cứu giải pháp thiết kế) với thời hạn cụ thể.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Việc phân công và ủy quyền nhiệm vụ diễn ra tức thì, với đầy đủ thông tin đầu vào (Project Brief).</td>
+                        <td>Phân bổ trách nhiệm rõ ràng; thiết lập thời hạn thực tế cho từng bộ phận.</td>
+                        <td>Cần tích hợp dữ liệu pháp lý sơ bộ về ranh giới lộ giới và mật độ xây dựng cụ thể của Quận 2.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 2 -->
+        <h2>KỊCH BẢN 2: NGHIÊN CỨU VÀ THIẾT KẾ SƠ BỘ</h2>
+        <p><strong>Tóm tắt:</strong> Báo cáo phân tích chuyên sâu về hướng nắng (Tây Nam), hướng gió và bối cảnh đô thị. Đề xuất ý tưởng "Sự tĩnh lặng trong không gian" với giải pháp phân vùng 3 tầng, sử dụng giếng trời và cầu thang hở để tối ưu hóa ánh sáng.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dữ liệu môi trường được tích hợp trực tiếp vào các giải pháp kiến trúc (sử dụng kính Low-E, lam chắn nắng).</td>
+                        <td>Giải pháp phân vùng hợp lý, tối ưu hóa diện tích nhỏ; phân tích vi khí hậu rất chi tiết.</td>
+                        <td>Cần bổ sung phân tích về ô nhiễm tiếng ồn đô thị do dự án nằm trong khu vực đang phát triển của Quận 2.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 3 -->
+        <h2>KỊCH BẢN 3: QUY TRÌNH THIẾT KẾ TOÀN DIỆN</h2>
+        <p><strong>Tóm tắt:</strong> Thiết lập quy trình 5 bước từ khảo sát đến xuất hồ sơ. Cung cấp các AI Prompt chi tiết cho phối cảnh nội/ngoại thất 3D và liệt kê đầy đủ các thành phần hồ sơ thiết kế (Kiến trúc, Kết cấu, M&E, Nội thất).</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cấu trúc hồ sơ đầy đủ theo tiêu chuẩn ngành xây dựng Việt Nam.</td>
+                        <td>Các AI Prompt chuyên sâu giúp rút ngắn thời gian render; quy trình thiết kế chặt chẽ.</td>
+                        <td>Cần tích hợp module kiểm tra xung đột giữa hệ thống M&E và Kết cấu (BIM Clash Detection).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 4 -->
+        <h2>KỊCH BẢN 4: VÒNG LẶP PHẢN HỒI (FEEDBACK LOOP)</h2>
+        <p><strong>Tóm tắt:</strong> CEO AI đưa ra phản hồi về không gian xanh, chiều cao tầng và vật liệu mặt tiền. Phó Giám đốc Thiết kế lập tức đưa ra giải pháp kỹ thuật: sử dụng sàn dự ứng lực để tăng chiều cao thông thủy lên 3.9m và thay đổi sang đá Granite đen.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tương tác giữa các cấp quản lý AI logic và mang tính kỹ thuật cao.</td>
+                        <td>Khả năng xử lý vấn đề linh hoạt; đề xuất công nghệ xây dựng hiện đại (sàn phẳng không dầm).</td>
+                        <td>Cần có bảng so sánh tác động chi phí khi thay đổi vật liệu từ thông dụng sang đá tự nhiên.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 5 -->
+        <h2>KỊCH BẢN 5: QUY TRÌNH CUỐI ĐẾN CUỐI (END-TO-END)</h2>
+        <p><strong>Tóm tắt:</strong> Thực hiện dự án quy mô lớn "Opal Center District 1" (20 tầng). Quy trình bao gồm từ Brief, nghiên cứu quy hoạch, Massing 3D, chỉnh sửa thời gian thực, xuất file BIM và báo cáo bền vững (LEED).</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hệ thống xử lý được các dự án phức tạp với nhiều tiêu chuẩn khắt khe.</td>
+                        <td>Tích hợp đánh giá tính bền vững và BOQ; khả năng xuất file BIM là một lợi thế lớn.</td>
+                        <td>Cần bổ sung mô phỏng lưu lượng giao thông (Traffic Study) cho khu vực trung tâm Quận 1.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 6 -->
+        <h2>KỊCH BẢN 6: CÁC TRƯỜNG HỢP BIÊN (EDGE CASES)</h2>
+        <p><strong>Tóm tắt:</strong> Thử nghiệm khả năng AI với hai kịch bản thách thức: nhà phố siêu hẹp (2.5m) và biệt thự phong cách Cyberpunk. AI đề xuất giải pháp lệch tầng, cầu thang console và hệ thống "cyber-garden" với đèn UV.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI thể hiện sự sáng tạo và giải quyết vấn đề đối với các ràng buộc không gian ngặt nghèo.</td>
+                        <td>Tư duy thẩm mỹ và kỹ thuật đột phá; giải quyết hiệu quả vấn đề lấy sáng cho nhà hẹp.</td>
+                        <td>Phong cách Cyberpunk cần đối chiếu kỹ với quy định cảnh quan đô thị Việt Nam để đảm bảo tính khả thi.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 7 -->
+        <h2>KỊCH BẢN 7: DỰ ÁN NHÀ Ở XÃ HỘI (OPAL HARMONY)</h2>
+        <p><strong>Tóm tắt:</strong> Thiết kế căn hộ 45m² tối ưu chi phí tại Bình Dương. Sử dụng các module tiền chế, nội thất linh hoạt và quy hoạch tổng thể tập trung vào không gian cộng đồng và công nghệ bê tông đúc sẵn.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tập trung vào tính thực tiễn và khả năng thi công nhanh.</td>
+                        <td>Giải pháp vật liệu địa phương giúp giảm giá thành; quy hoạch 40% diện tích xanh rất ấn tượng.</td>
+                        <td>Cần thêm chi tiết về giải pháp vận hành và quản lý tòa nhà sau khi bàn giao.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kịch bản 8 -->
+        <h2>KỊCH BẢN 8: KHU NGHỈ DƯỠNG CAO CẤP (OPAL AZURE)</h2>
+        <p><strong>Tóm tắt:</strong> Thiết kế biệt thự sát biển tại Phú Quốc với tiêu chí hòa mình "vô hình" vào thiên nhiên. Sử dụng mái lá, vật liệu thô mộc, hệ thống chiếu sáng Dark Sky bảo vệ môi trường và quản lý tái sử dụng nước mưa.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 33%">Quan sát</th>
+                        <th style="width: 33%">Ưu điểm</th>
+                        <th style="width: 34%">Hạn chế & Cải tiến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sự kết hợp hoàn hảo giữa tính sang trọng và bảo tồn sinh thái.</td>
+                        <td>Chiến lược cảnh quan bền vững; chú trọng vào đa dạng sinh học và ô nhiễm ánh sáng.</td>
+                        <td>Cần tính toán giải pháp chống ăn mòn muối biển cho các hệ khung gỗ và hệ thống cơ điện.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Kết luận chung -->
+        <h2>KẾT LUẬN CHUNG</h2>
+        <p>Hệ thống <strong>Opal App</strong> đã vượt qua tất cả 8 kịch bản kiểm thử với kết quả xuất sắc. Hệ thống không chỉ thể hiện khả năng xử lý dữ liệu kỹ thuật chính xác mà còn có tư duy thiết kế sáng tạo, thích ứng tốt với nhiều loại hình dự án từ nhà ở giá rẻ đến khu nghỉ dưỡng cao cấp.</p>
         
-        <!-- Header -->
-        <header class="w-full text-center mb-12 animate-fade-in">
-            <h1 class="font-heading text-4xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 mb-4">
-                PROMPT OPAL PRO
-            </h1>
-            <div class="h-1 w-24 bg-gold-600 mx-auto rounded-full"></div>
-        </header>
+        <ol>
+            <li><strong>Thế mạnh cốt lõi:</strong> (1) Mức độ tự động hóa cao trong quy trình làm việc; (2) Các giải pháp kiến trúc gắn liền với phân tích môi trường thực tế; (3) Khả năng phản hồi và điều chỉnh kỹ thuật nhanh chóng.</li>
+            <li><strong>Kiến nghị cải thiện:</strong> Để hệ thống hoàn thiện hơn, cần tích hợp sâu hơn dữ liệu pháp lý xây dựng địa phương của Việt Nam và bổ sung module dự toán chi phí thời gian thực để hỗ trợ chủ đầu tư đưa ra quyết định tài chính chính xác.</li>
+        </ol>
 
-        <!-- Welcome Section -->
-        <section class="text-center mb-16 max-w-2xl animate-slide-up" style="animation-delay: 0.1s">
-            <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
-                Chào mừng bạn đến với <span class="text-emerald-400 font-semibold">Prompt Opal Pro</span> – Công cụ sinh prompt chuyên nghiệp ngẫu nhiên. Nhấn nút bên dưới để nhận ngay một prompt chất lượng cao!
-            </p>
-        </section>
-
-        <!-- Action Area -->
-        <div class="w-full flex justify-center mb-16 animate-slide-up" style="animation-delay: 0.2s">
-            <button id="generateBtn" onclick="generatePrompt()" class="group relative px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-emerald-500/50">
-                <span id="btnLabel">Tạo Prompt Ngẫu Nhiên Mới</span>
-                <div class="absolute inset-0 rounded-xl border-2 border-emerald-400/20 group-hover:border-emerald-400/50 transition-colors"></div>
-            </button>
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <p class="mb-1 text-right"><strong>Ngày báo cáo:</strong> 24 tháng 5 năm 2024</p>
+            <p class="text-right"><strong>Người báo cáo:</strong> Hệ thống Phân tích Opal App</p>
         </div>
+    </main>
 
-        <!-- Information Display Area (Hidden by default, shown on generate) -->
-        <div id="resultArea" class="w-full opacity-0 translate-y-8 pointer-events-none transition-all duration-700 ease-out space-y-8">
-            
-            <!-- Domain Display -->
-            <div class="flex items-center space-x-4">
-                <span class="text-sm font-heading font-semibold uppercase tracking-widest text-gold-500">Lĩnh vực hôm nay:</span>
-                <div id="domainBadge" class="px-4 py-1.5 bg-emerald-900/30 border border-emerald-500/30 text-emerald-400 rounded-full font-semibold text-sm">
-                    SEO BLOG
-                </div>
-            </div>
-
-            <!-- Prompt Content Container -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600/20 to-gold-600/20 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                <div class="relative glass-panel rounded-2xl p-6 md:p-8">
-                    <div id="promptContent" class="font-mono text-sm md:text-base leading-relaxed text-gray-300 max-h-[500px] overflow-y-auto pr-4 whitespace-pre-wrap selection:bg-gold-500/40">
-                        <!-- Content will be injected here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Controls Area -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pt-4">
-                <!-- Toggle -->
-                <div class="flex items-center space-x-4 bg-white/5 px-6 py-3 rounded-full border border-white/10">
-                    <span class="text-sm font-medium text-gray-300">Chế độ Siêu Chi Tiết</span>
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" id="detailToggle" class="sr-only toggle-checkbox" checked>
-                        <div class="w-12 h-6 bg-gray-700 rounded-full transition-colors duration-300 toggle-label p-1">
-                            <div class="toggle-dot w-4 h-4 bg-white rounded-full transition-transform duration-300 shadow-sm"></div>
-                        </div>
-                    </label>
-                </div>
-
-                <!-- Copy Button -->
-                <button onclick="copyToClipboard()" class="flex items-center space-x-2 px-8 py-3 bg-transparent border-2 border-emerald-600/50 hover:border-emerald-500 text-emerald-400 hover:text-emerald-300 rounded-xl font-heading font-semibold transition-all duration-300 hover:bg-emerald-500/10">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                    </svg>
-                    <span id="copyStatus">Copy Prompt</span>
-                </button>
-            </div>
-
-        </div>
-
-        <div class="mt-20 text-gray-600 text-xs tracking-widest uppercase font-heading">
-            Professional Grade • AI Prompt Architect
-        </div>
-
-    </div>
-
-    <script>
-        const promptData = {
-            domain: "SEO Blog",
-            content: `[Vai Trò]\nBạn sẽ đảm nhận vai trò là một AI SEO Content Architect ở đẳng cấp chuyên gia cấp cao (Senior Level). Bạn sở hữu tư duy vượt tầm của một người viết nội dung thông thường; bạn là một chiến lược gia kiến tạo tài sản kỹ thuật số, kết hợp hài hòa giữa tâm lý học hành vi người dùng và khoa học giải mã thuật toán tìm kiếm. Sự sắc bén của bạn nằm ở khả năng thao túng ngôn từ để làm hài lòng cả hệ thống trí tuệ nhân tạo của Google lẫn cảm xúc của độc giả.\n\n[Bối Cảnh]\nTrong kỷ nguyên SEO hiện đại, nơi các bản cập nhật thuật toán liên tục được triển khai nhằm loại bỏ nội dung rác và kém chất lượng, chiến lược SEO nhồi nhét truyền thống đã hoàn toàn mất đi sức mạnh. Google và các công cụ tìm kiếm hiện nay đánh giá cao những nội dung mang tính chuyên gia sâu sắc, dựa trên nền tảng Semantic SEO vững chắc và đáp ứng khắt khe các tiêu chí E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness). Bài viết này không sinh ra chỉ để thu thập lượng truy cập vô hồn; nó được kỳ vọng sẽ thiết lập một vị thế quyền lực tuyệt đối trong ngách, tối đa hóa CTR (Click-Through Rate) ngay trên trang kết quả, và tạo ra sức hút tự nhiên mạnh mẽ để củng cố Backlink Profile của toàn bộ website. \n\n[Nhiệm Vụ]\nNhiệm vụ trọng tâm của bạn là soạn thảo một bài SEO Blog mang tính đột phá. Điểm mấu chốt và bắt buộc trong quy trình này là bạn phải khởi động bằng kỹ thuật 'Reverse SERP Engineering' (Tái cấu trúc ngược kết quả tìm kiếm). Trước khi đặt bút viết bất kỳ đoạn văn nào cho nội dung chính, bạn phải tiến hành SERP Analysis một cách giả lập đối với 3 đối thủ đang chiếm lĩnh vị trí Top 3 cho từ khóa mục tiêu. Bạn cần giải mã tường tận: Tại sao thuật toán lại ưu ái xếp hạng họ? (Cấu trúc bài viết của họ ra sao, độ sâu nội dung thế nào, và cách họ thỏa mãn Search Intent). Sau khi bóc tách được "công thức chiến thắng" của họ, bạn phải thiết kế một phương pháp tiếp cận hoàn toàn khác biệt. Bài viết của bạn phải cố tình tạo ra sự tương phản thông qua một góc nhìn độc đáo hoặc phân tích sâu hơn, khiến nội dung của các đối thủ Top 3 trở nên hời hợt, dập khuôn và lỗi thời.\n\n[Quy Tắc]\nHãy tuân thủ nghiêm ngặt các tiêu chuẩn vi mô và vĩ mô sau đây:\n1. Thấu hiểu Search Intent: Giải mã chính xác mục đích tìm kiếm ẩn sau từ khóa. Đưa ra câu trả lời trực diện, sắc bén ngay từ những đoạn đầu tiên để giảm tối đa tỷ lệ thoát (Bounce Rate).\n2. Mạng lưới Semantic SEO & LSI Keywords: Tuyệt đối không nhồi nhét từ khóa. Hãy mở rộng bộ từ khóa cốt lõi bằng các LSI Keywords và cụm thực thể (Entities) liên quan mật thiết. Tạo ra một mạng lưới ngữ nghĩa tự nhiên, giúp bot tìm kiếm hiểu được chiều sâu và tính bao quát của chủ chủ đề.\n3. Hiện thực hóa E-E-A-T: Từng luận điểm phải toát lên bề dày kinh nghiệm thực chiến và thẩm quyền. Sử dụng giọng văn sắc sảo, tự tin, cung cấp các góc nhìn chuyên gia thực thụ để xây dựng lòng tin tuyệt đối từ người đọc.\n4. On-page optimization chuẩn mực: Thiết kế cấu trúc phân cấp thẻ H1, H2, H3 logic. Tối ưu hóa định dạng để nâng cao trải nghiệm người dùng (UX): tận dụng bullet points, in đậm các thuật ngữ quan trọng, và giữ các phân đoạn ngắn gọn.\n5. Chiến trúc Internal linking: Lồng ghép các văn bản neo (Anchor text) chứa từ khóa ngữ nghĩa một cách khéo léo để thực hiện internal linking đến các Pillar Page và Cluster Content liên quan, luân chuyển sức mạnh SEO (Link Juice) một cách mượt mà.\n\n[Định Dạng Đầu Ra]\nBản thiết kế cuối cùng của bạn phải được trình bày rành mạch theo cấu trúc 4 phần tách biệt:\n* Phần 1: Reverse SERP Engineering Report: Trình bày phân tích sâu sắc về lý do Top 3 đối thủ đang xếp hạng và phác thảo chiến lược khác biệt hóa cốt lõi của bạn trước khi viết.\n* Phần 2: SEO Blueprint: Danh sách chi tiết các LSI Keywords, phân loại Search Intent, và dàn ý bài viết chiến lược.\n* Phần 3: The Masterpiece Blog Post: Nội dung bài viết hoàn chỉnh, được gọt giũa tinh xảo, đáp ứng toàn bộ các tiêu chí On-page optimization, Semantic SEO và hệ tiêu chuẩn E-E-A-T.\n* Phần 4: Metadata & Technical Recommendations: Đề xuất Title tag và Meta Description với ngôn từ thôi miên nhằm tối ưu hóa CTR, kèm theo 3-5 gợi ý chiến lược cho internal linking.`
-        };
-
-        function generatePrompt() {
-            const btnLabel = document.getElementById('btnLabel');
-            const resultArea = document.getElementById('resultArea');
-            const promptContent = document.getElementById('promptContent');
-            const domainBadge = document.getElementById('domainBadge');
-
-            // Button label change
-            btnLabel.innerText = "Tạo lại";
-
-            // Populate content
-            domainBadge.innerText = promptData.domain;
-            promptContent.innerText = promptData.content;
-
-            // Trigger animation
-            resultArea.classList.remove('opacity-0', 'translate-y-8', 'pointer-events-none');
-            resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        async function copyToClipboard() {
-            const text = document.getElementById('promptContent').innerText;
-            const copyStatus = document.getElementById('copyStatus');
-            
-            try {
-                await navigator.clipboard.writeText(text);
-                copyStatus.innerText = "Đã copy!";
-                setTimeout(() => {
-                    copyStatus.innerText = "Copy Prompt";
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-            }
-        }
-    </script>
 </body>
 </html>
+
