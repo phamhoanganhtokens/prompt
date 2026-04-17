@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPAL APP - BÁO CÁO GIÁM ĐỐC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        opal: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                        },
+                        slate: {
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.15);
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .success-bg { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .warning-bg { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .danger-bg { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bento-grid { grid-template-columns: 1fr; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-opal-900/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-900/20 blur-[120px] rounded-full"></div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Header Section -->
+        <header class="mb-16 relative">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-opal-500/10 text-opal-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border border-opal-500/20">
+                            Automation System
+                        </span>
+                        <span id="current-date" class="text-slate-400 text-sm font-medium"></span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold font-display leading-tight">
+                        BÁO CÁO GIÁM ĐỐC <br/>
+                        <span class="gradient-text">TEST TỰ ĐỘNG OPAL APP</span>
+                    </h1>
+                </div>
+                <div class="glass-card p-6 rounded-3xl border-opal-500/20 flex flex-col items-end">
+                    <p class="text-slate-400 text-xs uppercase tracking-widest font-semibold mb-1">Mã định danh báo cáo</p>
+                    <p class="text-2xl font-mono font-bold text-opal-400 tracking-tighter">OPAL-TEST-MASTER-2026</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Stats Bento Grid -->
+        <div class="bento-grid mb-12">
+            <div class="glass-card p-8 rounded-[2.5rem] col-span-1 md:col-span-2">
+                <h3 class="text-opal-400 text-sm font-bold uppercase tracking-widest mb-4">Tóm tắt yêu cầu</h3>
+                <p class="text-slate-300 leading-relaxed text-lg">
+                    Quy trình kiểm thử toàn diện thực hiện để đảm bảo hệ thống vận hành ổn định, đa nhiệm và tuân thủ các quy định pháp luật mới nhất về BĐS tại Việt Nam (2023 - 2026). Trọng tâm bao gồm <span class="text-white font-semibold italic">phối hợp Agent AI, quản trị rủi ro pháp lý & Tokenization.</span>
+                </p>
+            </div>
+            <div class="glass-card p-8 rounded-[2.5rem] flex flex-col justify-center">
+                <p class="text-slate-400 text-sm font-bold uppercase mb-2">Chế độ vận hành</p>
+                <div class="text-4xl font-display font-extrabold text-emerald-400">TỰ ĐỘNG 100%</div>
+                <p class="text-xs text-slate-500 mt-2">Zero human intervention required</p>
+            </div>
+            <div class="glass-card p-8 rounded-[2.5rem] flex flex-col justify-center">
+                <p class="text-slate-400 text-sm font-bold uppercase mb-2">Trạng thái hệ thống</p>
+                <div class="flex items-center gap-3">
+                    <span class="relative flex h-4 w-4">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-3xl font-display font-extrabold text-white">READY</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agents Involved -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-display font-bold mb-8 flex items-center gap-4">
+                <span class="w-8 h-[2px] bg-opal-500"></span> 
+                CÁC AGENT ĐÃ XỬ LÝ
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="glass-card p-4 rounded-2xl text-center group">
+                    <div class="w-12 h-12 bg-opal-500/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">🤖</div>
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Smoke Test</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center group">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">⚙️</div>
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Orchestrator</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center group">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">⚖️</div>
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Legal Agent</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center group">
+                    <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">📊</div>
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Performance</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center group">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">💎</div>
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Tokenization</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center group">
+                    <div class="w-12 h-12 bg-rose-500/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">🛡️</div>
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Risk Agent</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Report Tabs/Sections -->
+        <div class="space-y-12">
+            
+            <!-- Phase 1 -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold font-display uppercase tracking-widest text-opal-400">Giai đoạn 1: Smoke & Single Agent</h3>
+                    <span class="status-badge success-bg">Passed 10/10</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass-card p-4 rounded-xl flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">TC-01</p>
+                            <p class="text-sm font-semibold">Đăng nhập OTP</p>
+                        </div>
+                        <p class="text-xs text-emerald-400 font-medium">1.2s • Thành công</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">TC-02</p>
+                            <p class="text-sm font-semibold">Tìm kiếm Quận/Huyện</p>
+                        </div>
+                        <p class="text-xs text-emerald-400 font-medium">Filter OK • Thành công</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">TC-03</p>
+                            <p class="text-sm font-semibold">Đăng tin BĐS mới</p>
+                        </div>
+                        <p class="text-xs text-emerald-400 font-medium">Kho tạm • Thành công</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold">TC-06</p>
+                            <p class="text-sm font-semibold">Chatbot AI định giá</p>
+                        </div>
+                        <p class="text-xs text-emerald-400 font-medium">Dữ liệu lịch sử • Thành công</p>
+                    </div>
+                </div>
+                <details class="mt-4 group">
+                    <summary class="cursor-pointer text-xs font-bold text-opal-400/60 uppercase tracking-widest hover:text-opal-400 transition-colors list-none flex items-center gap-2">
+                        <span>Xem chi tiết tất cả test cases</span>
+                        <svg class="w-3 h-3 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="glass-card p-4 rounded-xl flex justify-between items-center"><p class="text-sm">Cập nhật hồ sơ & KYC</p><p class="text-xs text-emerald-400">Mã hóa OK</p></div>
+                        <div class="glass-card p-4 rounded-xl flex justify-between items-center"><p class="text-sm">Thông báo đẩy (Push)</p><p class="text-xs text-emerald-400">&lt;2s</p></div>
+                        <div class="glass-card p-4 rounded-xl flex justify-between items-center"><p class="text-sm">Tải ảnh 4K (10MB)</p><p class="text-xs text-emerald-400">Nén OK</p></div>
+                        <div class="glass-card p-4 rounded-xl flex justify-between items-center"><p class="text-sm">Lọc theo giá (1-5 tỷ)</p><p class="text-xs text-emerald-400">100% Khớp</p></div>
+                        <div class="glass-card p-4 rounded-xl flex justify-between items-center"><p class="text-sm">Bản đồ tương tác</p><p class="text-xs text-emerald-400">Smooth</p></div>
+                        <div class="glass-card p-4 rounded-xl flex justify-between items-center"><p class="text-sm">Hỗ trợ kỹ thuật form</p><p class="text-xs text-emerald-400">Ticket OK</p></div>
+                    </div>
+                </details>
+            </section>
+
+            <!-- Phase 2 -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold font-display uppercase tracking-widest text-indigo-400">Giai đoạn 2: Multi-Agent & Workflow</h3>
+                    <span class="status-badge success-bg">Passed 10/10</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-3xl col-span-1 lg:col-span-2 border-l-4 border-l-indigo-500">
+                        <h4 class="text-slate-100 font-bold mb-4">Quy trình Multi-Agent tiêu biểu</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0 text-xs font-bold text-indigo-400">01</div>
+                                <p class="text-sm text-slate-300 italic"><strong class="text-white not-italic">Đàm phán & Soạn thảo:</strong> Negotiator Agent chốt giá -> Legal Agent soạn PDF hợp đồng tự động.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0 text-xs font-bold text-indigo-400">02</div>
+                                <p class="text-sm text-slate-300 italic"><strong class="text-white not-italic">Tokenization:</strong> Agent thẩm định -> Agent phân tách 1000 mã token -> Hiển thị tỷ lệ sở hữu.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0 text-xs font-bold text-indigo-400">03</div>
+                                <p class="text-sm text-slate-300 italic"><strong class="text-white not-italic">Xác thực KYC:</strong> OCR trích xuất thẻ giả -> Chặn đăng ký ngay lập tức.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-6 rounded-3xl bg-indigo-500/5">
+                        <h4 class="text-slate-100 font-bold mb-4">Thông số kỹ thuật</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center"><span class="text-xs text-slate-400">Locking Record</span><span class="text-xs font-bold text-emerald-400">Ổn định</span></div>
+                            <div class="flex justify-between items-center"><span class="text-xs text-slate-400">Đồng bộ Lead</span><span class="text-xs font-bold text-emerald-400">Tức thì</span></div>
+                            <div class="flex justify-between items-center"><span class="text-xs text-slate-400">Lưu chat log</span><span class="text-xs font-bold text-emerald-400">Đầy đủ</span></div>
+                            <div class="flex justify-between items-center"><span class="text-xs text-slate-400">Agent báo cáo</span><span class="text-xs font-bold text-emerald-400">Chuẩn hóa</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 3 -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold font-display uppercase tracking-widest text-rose-400">Giai đoạn 3: Legal & Safety Risk</h3>
+                    <span class="status-badge warning-bg">Shield Active</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-card p-6 rounded-3xl border-b-4 border-b-rose-500">
+                        <p class="text-xs font-bold text-rose-400 uppercase mb-2">Đặt cọc 6%</p>
+                        <p class="text-sm text-slate-200">Bị chặn theo Luật 2023 (Max 5%).</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-3xl border-b-4 border-b-rose-500">
+                        <p class="text-xs font-bold text-rose-400 uppercase mb-2">Tiền mặt > 100M</p>
+                        <p class="text-sm text-slate-200">Cảnh báo yêu cầu chuyển khoản.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-3xl border-b-4 border-b-rose-500">
+                        <p class="text-xs font-bold text-rose-400 uppercase mb-2">Content Filter</p>
+                        <p class="text-sm text-slate-200">Flag bài đăng cam kết lãi 30%/năm.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-3xl border-b-4 border-b-rose-500">
+                        <p class="text-xs font-bold text-rose-400 uppercase mb-2">AML Check</p>
+                        <p class="text-sm text-slate-200">Gắn nhãn theo dõi giao dịch rủi ro.</p>
+                    </div>
+                </div>
+                <div class="mt-6 glass-card p-6 rounded-3xl bg-rose-500/5">
+                    <h4 class="text-rose-400 font-bold text-sm uppercase mb-4 tracking-wider">Cảnh báo pháp lý trọng yếu</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-xs font-bold text-white mb-2">RỦI RO TOKENIZATION</p>
+                            <p class="text-sm text-slate-400">Chưa có khung pháp lý chính thức. Khuyến nghị dùng Hợp đồng hợp tác kinh doanh (Sandbox).</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-white mb-2">BẢO MẬT DỮ LIỆU (NĐ 13)</p>
+                            <p class="text-sm text-slate-400">Cần đánh giá tác động định kỳ. Phạt lên đến 5% doanh thu nếu vi phạm.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 4 -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold font-display uppercase tracking-widest text-amber-400">Giai đoạn 4: Real-World & Performance</h3>
+                    <span class="status-badge success-bg">Optimized</span>
+                </div>
+                <div class="bg-slate-900/50 rounded-[3rem] p-8 border border-slate-800">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <p class="text-slate-500 text-xs font-bold uppercase mb-2">Concurrent Users</p>
+                            <p class="text-4xl font-display font-extrabold text-white">1,000</p>
+                            <p class="text-xs text-amber-400 mt-1">750ms Response</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-slate-500 text-xs font-bold uppercase mb-2">Stress Test (60m)</p>
+                            <p class="text-4xl font-display font-extrabold text-white">10,000+</p>
+                            <p class="text-xs text-amber-400 mt-1">Images Uploaded</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-slate-500 text-xs font-bold uppercase mb-2">Database Failover</p>
+                            <p class="text-4xl font-display font-extrabold text-white">22s</p>
+                            <p class="text-xs text-amber-400 mt-1">Zero Data Loss</p>
+                        </div>
+                    </div>
+                    <div class="mt-12 space-y-6">
+                        <div class="flex justify-between items-end">
+                            <p class="text-sm font-bold">Mức tiêu thụ pin (AR Map 1h)</p>
+                            <p class="text-sm font-bold text-amber-400">10%</p>
+                        </div>
+                        <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-amber-400 rounded-full" style="width: 10%"></div>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <p class="text-sm font-bold">Latency Chatbot Peak</p>
+                            <p class="text-sm font-bold text-amber-400">1.8s</p>
+                        </div>
+                        <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-amber-400 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Budget & Timeline -->
+        <section class="mt-24 mb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-display font-bold mb-6">Đầu tư & <span class="text-opal-400">Lộ trình</span></h2>
+                    <p class="text-slate-400 leading-relaxed mb-8">Tổng chi phí bao gồm hạ tầng Cloud, API AI cao cấp, công cụ stress test và nhân sự giám sát hệ thống 24/7 trong suốt quá trình thực thi.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-opal-500/10 flex items-center justify-center text-opal-400">💰</div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Ước tính chi phí</p>
+                                <p class="text-xl font-bold">155,000,000 VNĐ</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">🗓️</div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Thời gian thực hiện</p>
+                                <p class="text-xl font-bold">18 Ngày làm việc</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-[3rem] border-opal-500/30 bg-gradient-to-br from-opal-500/5 to-transparent">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Timeline Phân bổ</h4>
+                    <div class="relative">
+                        <div class="absolute left-2 top-0 bottom-0 w-[2px] bg-slate-800"></div>
+                        <div class="space-y-8 relative">
+                            <div class="pl-8 relative">
+                                <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-opal-500 shadow-[0_0_10px_rgba(14,165,233,0.5)]"></div>
+                                <p class="text-sm font-bold">Giai đoạn 1 & 2</p>
+                                <p class="text-xs text-slate-500">08 ngày • Smoke & Workflow</p>
+                            </div>
+                            <div class="pl-8 relative">
+                                <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-500"></div>
+                                <p class="text-sm font-bold">Giai đoạn 3 & 4</p>
+                                <p class="text-xs text-slate-500">10 ngày • Risk & Performance</p>
+                            </div>
+                            <div class="pl-8 relative">
+                                <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-emerald-500"></div>
+                                <p class="text-sm font-bold">Bàn giao & Triển khai</p>
+                                <p class="text-xs text-slate-500">Sẵn sàng vận hành thực tế</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Approval Actions -->
+        <section class="max-w-4xl mx-auto text-center py-12 px-8 glass-card rounded-[4rem] border-2 border-white/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-opal-500/10 to-transparent pointer-events-none"></div>
+            <h2 class="text-3xl font-display font-bold mb-4">Phê duyệt quy trình</h2>
+            <p class="text-slate-400 mb-10 max-w-2xl mx-auto">Giám đốc <span class="text-white font-bold">Phạm Hoàng Anh</span> vui lòng xem xét báo cáo và lựa chọn phương án xử lý để hệ thống AI bắt đầu kích hoạt.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="w-full sm:w-auto px-10 py-5 bg-opal-500 hover:bg-opal-400 text-white font-bold rounded-2xl transition-all shadow-lg shadow-opal-500/20 transform hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
+                    Duyệt triển khai
+                </button>
+                <button class="w-full sm:w-auto px-10 py-5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-2xl transition-all border border-slate-700 uppercase tracking-widest text-sm">
+                    Chỉnh sửa
+                </button>
+                <button class="w-full sm:w-auto px-10 py-5 bg-transparent hover:bg-rose-500/10 text-rose-500 font-bold rounded-2xl transition-all border border-rose-500/30 uppercase tracking-widest text-sm">
+                    Từ chối
+                </button>
+            </div>
+            
+            <p class="mt-12 text-xs text-slate-500 italic">Toàn bộ quy trình được tổng hợp tự động bởi OPAL AI Master Orchestrator.</p>
+        </section>
+
+    </main>
+
+    <script>
+        // Set current date
+        const dateEl = document.getElementById('current-date');
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateEl.textContent = now.toLocaleDateString('vi-VN', options);
+
+        // Add some micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.textContent.trim();
+                console.log(`Action selected: ${action}`);
+                // In a real app, this would trigger an API call
+                if (action === 'Duyệt triển khai') {
+                    btn.innerHTML = '<span class="flex items-center gap-2"><svg class="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Đang xử lý...</span>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
