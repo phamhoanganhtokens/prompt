@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Mẫu Test Opal App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg-color: #fdfdfd;
+            --container-bg: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent-color: #2563eb;
+            --code-bg: #f5f7f9;
+            --code-border: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        }
+
+        /* Justify all text as requested */
+        .justify-content {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .prompt-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            counter-increment: prompt-counter;
+        }
+
+        .prompt-card:hover {
+            transform: translateY(-2px);
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        /* Animation for list items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        li {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        li:nth-child(n) {
+            animation-delay: calc(0.05s * var(--i));
+        }
+
+        /* Copy Button styling */
+        .copy-btn {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .prompt-card:hover .copy-btn {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        opal: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                    }
+                }
+            }
+        }
+
+        function copyToClipboard(button, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<span class="flex items-center gap-1 text-green-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!</span>';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</head>
+<body class="p-0 m-0">
+
+    <header class="glass-header mb-8 py-8 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-opal-900 mb-2">
+                📋 DANH SÁCH MẪU TEST OPAL APP
+            </h1>
+            <p class="text-opal-800 opacity-60 font-medium italic">
+                (Test Generator 1.0 - Premium Testing Environment)
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 pb-20">
+        <section class="mb-12">
+            <ol class="space-y-8 list-none">
+                <!-- Prompt 1 -->
+                <li style="--i:1" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">1</span>
+                        <div class="flex-1 overflow-hidden">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Thiết lập sơ đồ tổ chức phòng Marketing gồm 5 nhân sự và mô tả nhiệm vụ chi tiết cho mỗi vị trí.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Thiết lập sơ đồ tổ chức phòng Marketing gồm 5 nhân sự và mô tả nhiệm vụ chi tiết cho mỗi vị trí.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 2 -->
+                <li style="--i:2" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">2</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Phân tích 1000 dòng dữ liệu phản hồi khách hàng để trích xuất 3 vấn đề cốt lõi nhất trong vòng 10 giây.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Phân tích 1000 dòng dữ liệu phản hồi khách hàng để trích xuất 3 vấn đề cốt lõi nhất trong vòng 10 giây.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 3 -->
+                <li style="--i:3" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">3</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Xây dựng phương án hòa giải giữa bộ phận Sản xuất và bộ phận Bán hàng khi phát sinh mâu thuẫn về tiến độ giao hàng.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Xây dựng phương án hòa giải giữa bộ phận Sản xuất và bộ phận Bán hàng khi phát sinh mâu thuẫn về tiến độ giao hàng.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 4 -->
+                <li style="--i:4" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">4</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Đề xuất quy trình làm việc hàng tuần tự động hóa cho nhóm phát triển phần mềm theo mô hình Agile/Scrum.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Đề xuất quy trình làm việc hàng tuần tự động hóa cho nhóm phát triển phần mềm theo mô hình Agile/Scrum.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 5 -->
+                <li style="--i:5" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">5</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Tổng hợp tin tức về sự thay đổi lãi suất của Ngân hàng Nhà nước sáng nay và phân tích tác động đến thị trường bất động sản.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Tổng hợp tin tức về sự thay đổi lãi suất của Ngân hàng Nhà nước sáng nay và phân tích tác động đến thị trường bất động sản.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 6 -->
+                <li style="--i:6" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">6</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Thực hiện giải thuật tối ưu hóa chuỗi cung ứng với 10 kho hàng và 50 điểm phân phối để giảm thiểu chi phí vận chuyển.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Thực hiện giải thuật tối ưu hóa chuỗi cung ứng với 10 kho hàng và 50 điểm phân phối để giảm thiểu chi phí vận chuyển.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 7 -->
+                <li style="--i:7" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">7</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Rà soát mẫu hợp đồng lao động để đảm bảo tuân thủ đầy đủ Bộ luật Lao động 2019 và các nghị định hướng dẫn.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Rà soát mẫu hợp đồng lao động để đảm bảo tuân thủ đầy đủ Bộ luật Lao động 2019 và các nghị định hướng dẫn.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 8 -->
+                <li style="--i:8" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">8</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Mô phỏng biến động danh mục cổ phiếu VN30 khi chỉ số thị trường giảm 5% và tính toán chỉ số giá trị rủi ro VaR.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Mô phỏng biến động danh mục cổ phiếu VN30 khi chỉ số thị trường giảm 5% và tính toán chỉ số giá trị rủi ro VaR.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 9 -->
+                <li style="--i:9" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">9</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Thiết lập bộ chỉ số KPI đo lường hiệu quả chuyển đổi số cho doanh nghiệp vừa và nhỏ trong lĩnh vực bán lẻ.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Thiết lập bộ chỉ số KPI đo lường hiệu quả chuyển đổi số cho doanh nghiệp vừa và nhỏ trong lĩnh vực bán lẻ.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 10 -->
+                <li style="--i:10" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">10</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Soạn thảo tờ trình gửi CEO xin phê duyệt kế hoạch mở rộng thị trường sang khu vực Đông Nam Á trong quý tiếp theo.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Soạn thảo tờ trình gửi CEO xin phê duyệt kế hoạch mở rộng thị trường sang khu vực Đông Nam Á trong quý tiếp theo.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 11 -->
+                <li style="--i:11" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">11</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Lập kế hoạch ứng phó tình huống khẩn cấp khi hệ thống máy chủ doanh nghiệp bị tấn công mã hóa dữ liệu đòi tiền chuộc.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Lập kế hoạch ứng phó tình huống khẩn cấp khi hệ thống máy chủ doanh nghiệp bị tấn công mã hóa dữ liệu đòi tiền chuộc.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 12 -->
+                <li style="--i:12" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">12</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Thực hiện phân bổ lại nhân sự từ phòng Hành chính sang phòng Dự án để tối ưu hóa nguồn lực cho chiến dịch cuối năm.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Thực hiện phân bổ lại nhân sự từ phòng Hành chính sang phòng Dự án để tối ưu hóa nguồn lực cho chiến dịch cuối năm.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 13 -->
+                <li style="--i:13" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">13</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Thử nghiệm khả năng của AI Agent trong việc xử lý đồng thời 5 yêu cầu lập kế hoạch tài chính phức tạp từ các nguồn khác nhau.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Thử nghiệm khả năng của AI Agent trong việc xử lý đồng thời 5 yêu cầu lập kế hoạch tài chính phức tạp từ các nguồn khác nhau.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 14 -->
+                <li style="--i:14" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">14</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Soạn thảo email phản hồi khách hàng đại diện cho bộ phận CSKH để xử lý khiếu nại về chất lượng dịch vụ của trung tâm.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Soạn thảo email phản hồi khách hàng đại diện cho bộ phận CSKH để xử lý khiếu nại về chất lượng dịch vụ của trung tâm.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 15 -->
+                <li style="--i:15" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">15</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Cập nhật diễn biến giá dầu thế giới và lập báo cáo nhanh về khả năng điều chỉnh giá xăng dầu trong nước trong kỳ điều hành tới.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Cập nhật diễn biến giá dầu thế giới và lập báo cáo nhanh về khả năng điều chỉnh giá xăng dầu trong nước trong kỳ điều hành tới.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 16 -->
+                <li style="--i:16" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">16</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Kiểm tra tính pháp lý của quy trình thu thập thông tin khách hàng theo Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Kiểm tra tính pháp lý của quy trình thu thập thông tin khách hàng theo Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 17 -->
+                <li style="--i:17" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">17</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Đánh giá rủi ro tín dụng của một hồ sơ vay vốn doanh nghiệp dựa trên báo cáo tài chính kiểm toán trong 3 năm liên tiếp.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Đánh giá rủi ro tín dụng của một hồ sơ vay vốn doanh nghiệp dựa trên báo cáo tài chính kiểm toán trong 3 năm liên tiếp.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 18 -->
+                <li style="--i:18" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">18</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Viết tờ trình xin cấp ngân sách bổ sung cho hoạt động đào tạo chuyên sâu nhân sự kỹ thuật cao của tổng công ty.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Viết tờ trình xin cấp ngân sách bổ sung cho hoạt động đào tạo chuyên sâu nhân sự kỹ thuật cao của tổng công ty.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 19 -->
+                <li style="--i:19" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">19</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Thiết lập quy trình phản ứng nhanh khi có sự cố cháy nổ xảy ra tại kho bãi của doanh nghiệp theo quy định PCCC.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Thiết lập quy trình phản ứng nhanh khi có sự cố cháy nổ xảy ra tại kho bãi của doanh nghiệp theo quy định PCCC.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Prompt 20 -->
+                <li style="--i:20" class="prompt-card group">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-opal-100 text-opal-900 font-bold border border-opal-200">20</span>
+                        <div class="flex-1">
+                            <div class="relative bg-neutral-50 rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                                <button onclick="copyToClipboard(this, 'Phân tích tính logic và khả năng suy luận của hệ thống khi phải đối mặt với một kịch bản khủng hoảng truyền thông đa kênh.')" class="copy-btn absolute right-4 top-4 text-xs font-sans text-neutral-500 hover:text-opal-800 bg-white/80 px-2 py-1 rounded border border-neutral-200 backdrop-blur-sm z-10">
+                                    Copy Prompt
+                                </button>
+                                <pre class="p-6 mono-font text-sm md:text-base text-neutral-800 justify-content leading-relaxed"><code>Phân tích tính logic và khả năng suy luận của hệ thống khi phải đối mặt với một kịch bản khủng hoảng truyền thông đa kênh.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="mt-16 border-t border-neutral-200 pt-8">
+            <div class="bg-opal-50 rounded-2xl p-6 md:p-8 border border-opal-100 shadow-inner">
+                <p class="text-opal-900 font-medium text-lg md:text-xl justify-content italic leading-relaxed">
+                    Bạn chỉ cần copy từng mẫu test và paste trực tiếp vào Opal để kiểm tra. Opal sẽ tự vận hành đúng quy trình.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Staggered appearance on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const listItems = document.querySelectorAll('li');
+            listItems.forEach((item, index) => {
+                item.style.setProperty('--i', index + 1);
+            });
+        });
+    </script>
+</body>
+</html>
