@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opal - Kịch Bản Kiểm Thử Phong Thủy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#fcfcfc',
+                            dark: '#2c3e50',
+                            accent: '#34495e',
+                            slate: '#f2f2f2',
+                            gold: '#c5a059'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Times New Roman"', 'serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                        sans: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        .document-container {
+            max-width: 850px;
+            margin: 2rem auto;
+            background-color: #fcfcfc;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+        .test-case-section {
+            border: 1px solid #ddd;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+        .test-case-section:hover {
+            border-color: #2c3e50;
+        }
+        .copy-block {
+            background-color: rgba(0,0,0,0.03);
+            border-left: 4px solid #2c3e50;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .copy-block:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .heading-separator {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            width: 100%;
+        }
+        .text-justify {
+            text-align: justify;
+        }
+        @media (max-width: 640px) {
+            .document-container {
+                margin: 0;
+                padding: 1.5rem;
+            }
+            .test-case-section {
+                padding: 1.5rem;
+            }
+        }
+        /* Custom Tooltip for Copy */
+        .copy-tooltip::after {
+            content: "Nhấp để sao chép";
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-family: sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .copy-block:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-serif">
+
+    <main class="document-container">
+        <!-- Header / Intro -->
+        <header class="mb-12">
+            <div class="flex items-center justify-between mb-8">
+                <span class="text-xs tracking-widest uppercase font-sans text-brand-accent">Hệ Thống Kiểm Thử Opal</span>
+                <span class="text-xs tracking-widest uppercase font-sans text-brand-accent">2024</span>
+            </div>
+            <h1 class="font-display text-4xl mb-6 text-brand-dark italic border-b-2 border-brand-gold inline-block pb-2">Tài Liệu Kiểm Thử Giao Thức</h1>
+            <p class="text-justify mb-4 text-gray-700 leading-relaxed">
+                Chào bạn, dưới đây là danh sách các ca kiểm thử dành cho ứng dụng Opal. Danh sách này được thiết kế để đánh giá khả năng xử lý các câu hỏi liên quan đến phong thủy, tử vi và dịch lý của hệ thống. Vui lòng tuân thủ các hướng dẫn bên dưới khi tiến hành nhập dữ liệu kiểm thử để đảm bảo tính thống nhất.
+            </p>
+        </header>
+
+        <!-- Test Case 1 -->
+        <section class="test-case-section">
+            <div class="heading-separator">
+                <h3 class="text-xl font-bold uppercase tracking-tight text-brand-dark">MẪU TEST SỐ 01 – Công việc</h3>
+            </div>
+            <p class="text-justify mb-4">
+                <strong>Câu hỏi đầy đủ:</strong> Tôi là nam, sinh năm 1980 tuổi Canh Thân bản mệnh Thạch Lựu Mộc. Năm nay tôi dự định mở công ty kinh doanh chuyên về lĩnh vực đồ gỗ. Xin hỏi theo logic của Ngũ Hành và quẻ biểu Kinh Dịch thì năm nay tôi có bị phạm Thái Tuế hay Tam Tai không? Nếu tiến hành mở công ty thì tôi nên chọn Ngày Đại Cát nào để khai trương cho thuận lợi và đúng với phong thủy?
+            </p>
+            <p class="text-brand-accent font-sans text-sm mb-2 font-semibold">
+                → Copy toàn bộ nội dung bên dưới và paste vào Opal:
+            </p>
+            <div class="copy-block relative" onclick="copyToClipboard(this)">
+                Nam 1980 tuổi Canh Thân mở công ty gỗ năm nay có phạm Thái Tuế, Tam Tai không và chọn Ngày Đại Cát nào để khai trương?
+            </div>
+            <div class="mt-4 pt-4 border-t border-dotted border-gray-300">
+                <p class="text-xs italic text-gray-500"><strong>Hướng dẫn nhập liệu:</strong> Sao chép nội dung ở phần câu hỏi rút gọn. Mở ứng dụng Opal, chuyển đến màn hình Tư vấn Phong Thủy. Dán văn bản vào ô nhập liệu chính và nhấn nút Gửi đi.</p>
+            </div>
+        </section>
+
+        <!-- Test Case 2 -->
+        <section class="test-case-section">
+            <div class="heading-separator">
+                <h3 class="text-xl font-bold uppercase tracking-tight text-brand-dark">MẪU TEST SỐ 02 – Tình duyên</h3>
+            </div>
+            <p class="text-justify mb-4">
+                <strong>Câu hỏi đầy đủ:</strong> Tôi là nữ, sinh năm 1992 tuổi Nhâm Thân. Thời gian qua chuyện tình cảm của tôi gặp nhiều trắc trở và không suôn sẻ. Xin hệ thống cho biết năm nay sao chiếu mệnh của tôi là sao gì, sao này có tác động xấu đến bản mệnh trong chuyện hôn nhân không? Đồng thời hãy chỉ tôi cách hóa giải sát khí và thu hút tình duyên dựa trên nguyên lý Ngũ Hành tương sinh tương khắc.
+            </p>
+            <p class="text-brand-accent font-sans text-sm mb-2 font-semibold">
+                → Copy toàn bộ nội dung bên dưới và paste vào Opal:
+            </p>
+            <div class="copy-block relative" onclick="copyToClipboard(this)">
+                Nữ 1992 năm nay sao chiếu mệnh gì, có xấu cho tình duyên không và hướng dẫn cách hóa giải theo Ngũ Hành?
+            </div>
+            <div class="mt-4 pt-4 border-t border-dotted border-gray-300">
+                <p class="text-xs italic text-gray-500"><strong>Hướng dẫn nhập liệu:</strong> Copy nguyên văn câu hỏi rút gọn. Tìm đến biểu tượng Tin nhắn mới trên giao diện Opal. Dán đoạn văn bản vào khu vực nhập câu hỏi và nhấn mũi tên Để trình.</p>
+            </div>
+        </section>
+
+        <!-- Test Case 3 -->
+        <section class="test-case-section">
+            <div class="heading-separator">
+                <h3 class="text-xl font-bold uppercase tracking-tight text-brand-dark">MẪU TEST SỐ 03 – Sức khỏe</h3>
+            </div>
+            <p class="text-justify mb-4">
+                <strong>Câu hỏi đầy đủ:</strong> Tôi là nam, sinh năm 2005 tuổi Ất Dậu. Gần đây sức khỏe của tôi suy giảm nhiều, thường xuyên bị mất ngủ và nhức mỏi. Được biết tuổi của tôi có thể đang rơi vào hạn Tam Tai, vậy xin luận giải một quẻ Kinh Dịch để tìm nguyên nhân và chỉ dẫn cách cải thiện sức khỏe. Tôi muốn biết mình cần kiêng kỵ và trấn hiểm hướng giữ nào khi kê giường trong phòng ngủ.
+            </p>
+            <p class="text-brand-accent font-sans text-sm mb-2 font-semibold">
+                → Copy toàn bộ nội dung bên dưới và paste vào Opal:
+            </p>
+            <div class="copy-block relative" onclick="copyToClipboard(this)">
+                Nam 2005 đang hạn Tam Tai bị suy nhược sức khỏe, xin luận quẻ Kinh Dịch để chỉ hướng tốt và xấu khi kê giường ngủ.
+            </div>
+            <div class="mt-4 pt-4 border-t border-dotted border-gray-300">
+                <p class="text-xs italic text-gray-500"><strong>Hướng dẫn nhập liệu:</strong> Bôi đen và sao chép câu hỏi rút gọn. Truy cập mục Giải đáp của ứng dụng Opal. Dán chuỗi văn bản vào hộp thoại chat và xác nhận Thực hiện.</p>
+            </div>
+        </section>
+
+        <!-- Test Case 4 -->
+        <section class="test-case-section">
+            <div class="heading-separator">
+                <h3 class="text-xl font-bold uppercase tracking-tight text-brand-dark">MẪU TEST SỐ 04 – Nhà cửa</h3>
+            </div>
+            <p class="text-justify mb-4">
+                <strong>Câu hỏi đầy đủ:</strong> Tôi là nữ, sinh năm 1975 tuổi Ất Mão. Năm nay tôi có kế hoạch cất nhà mới nhưng rất e ngại việc động thổ vì sợ phạm vào năm Thái Tuế hoặc hạn kim lâu, hoang ốc. Ứng dụng hãy phân tích cho tôi biết năm nay tuổi Ất Mão động thổ xây nhà có được không, và nếu được thì trong những tháng tới có Ngày Đại Cát nào hợp với Ngũ Hành bản mệnh Đại Khê Thủy của tôi nhất?
+            </p>
+            <p class="text-brand-accent font-sans text-sm mb-2 font-semibold">
+                → Copy toàn bộ nội dung bên dưới và paste vào Opal:
+            </p>
+            <div class="copy-block relative" onclick="copyToClipboard(this)">
+                Nữ 1975 Ất Mão mệnh Thủy muốn xây nhà năm nay có phạm Thái Tuế không, xin xem Ngày Đại Cát để động thổ.
+            </div>
+            <div class="mt-4 pt-4 border-t border-dotted border-gray-300">
+                <p class="text-xs italic text-gray-500"><strong>Hướng dẫn nhập liệu:</strong> Copy phần văn bản của câu hỏi rút gọn. Đăng nhập vào phiên làm việc của hệ thống Opal. Nhập câu hỏi vào thanh tìm kiếm AI và chọn Phân tích.</p>
+            </div>
+        </section>
+
+        <!-- Test Case 5 -->
+        <section class="test-case-section">
+            <div class="heading-separator">
+                <h3 class="text-xl font-bold uppercase tracking-tight text-brand-dark">MẪU TEST SỐ 05 – Tài lộc</h3>
+            </div>
+            <p class="text-justify mb-4">
+                <strong>Câu hỏi đầy đủ:</strong> Tôi là nam, sinh năm 1998 tuổi Mậu Dần. Công việc làm ăn của tôi từ đầu năm đến nay đang bị trì trệ, tài lộc tiêu hao nhiều. Xin hỏi luận theo nguyên lý Kinh Dịch thì tôi đang chịu ảnh hưởng từ sao chiếu mệnh nào? Để kích hoạt lại tài lộc, tôi có cần áp dụng quy luật Ngũ Hành để sắp xếp lại vật phẩm phong thủy trên bàn làm việc không, nếu có thì nên dùng vật phẩm màu gì?
+            </p>
+            <p class="text-brand-accent font-sans text-sm mb-2 font-semibold">
+                → Copy toàn bộ nội dung bên dưới và paste vào Opal:
+            </p>
+            <div class="copy-block relative" onclick="copyToClipboard(this)">
+                Nam 1998 tài lộc sa sút, xin luận Kinh Dịch và sao chiếu mệnh để tìm cách bố trí Ngũ Hành bàn làm việc kích tài lộc.
+            </div>
+            <div class="mt-4 pt-4 border-t border-dotted border-gray-300">
+                <p class="text-xs italic text-gray-500"><strong>Hướng dẫn nhập liệu:</strong> Sao chép đoạn câu hỏi rút gọn trên. Kích hoạt trợ lý ảo trên app Opal. Dán hoàn toàn nội dung vào diễn đàn và bấm Gửi yêu cầu hỗ trợ.</p>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <footer class="mt-12 pt-8 border-t-2 border-brand-gold">
+            <p class="text-justify text-gray-600 leading-relaxed italic">
+                Trên đây là năm ca kiểm thử hoàn chỉnh được xây dựng cho ứng dụng Opal nhằm mục đích kiểm tra việc trả lời các chủ đề chuyên sâu về tâm linh, phong thủy và tử vi. Vui lòng lưu ý và ghi nhận lại tất cả các phản hồi của hệ thống. Nếu phát hiện sự lệch lạc về kiến thức Ngũ Hành hay Kinh Dịch, hãy báo cáo lại để đội ngũ phát triển có thể tinh chỉnh và nâng cấp mô hình. Cảm ơn sự hợp tác của bạn trong quá trình kiểm thử này.
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        function copyToClipboard(element) {
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalBg = element.style.backgroundColor;
+                element.style.backgroundColor = '#e8f5e9';
+                const successText = document.createElement('span');
+                successText.innerText = " ✓ Đã sao chép";
+                successText.className = "absolute right-4 top-2 text-xs text-green-600 font-sans font-bold";
+                element.appendChild(successText);
+                
+                setTimeout(() => {
+                    element.style.backgroundColor = originalBg;
+                    successText.remove();
+                }, 2000);
+            }).catch(err => {
+                console.error('Lỗi khi sao chép: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
